@@ -3,10 +3,12 @@ import os
 import random
 clear = lambda: os.system('cls')
 name = ''
+summon=''
 health=10
-kills=0
 warriorL=False
 warriorR=False
+warriorRL=False
+warriorRR=False
 archerL=False
 archerR=False
 earth=False
@@ -21,45 +23,68 @@ def hp():
     global health
     global name
     print('Health: ',health,' Class: ',name)
+def hp2():
+    global health
+    global name
+    global summon
+    print('Health: ',health,' Class: ',name,' Elemental: ',summon)
 def loading():
     for x in range (0,4):
         b = "Loading" + "." * x
         print (b, end="\r")
         time.sleep(1)
 def classSelect():
+    global health
     global name
-    failed=False
-    if failed == False:
-        Main()
-        role=input('Pick a class: [1] Warrior  [2] Archer [3] Summoner \n')
-        try:
-            rolecheck = int(role)
-        except ValueError:
-            rolecheck = 0
-        if rolecheck == 1:
-            print('You have selected Warrior',end='\r')
-            name='Warrior'
-            level1_W()
-        elif rolecheck == 2:
-            print('You have selected Archer', end='\r')
-            name='Archer'
-            level1_A()
-        elif rolecheck == 3:
-            print('You have selected Summoner', end='\r')
-            name='Summoner'
-            level2_S()
-        elif rolecheck == 0:
-            failed=True
-            print('Please try again...')
-            time.sleep(1)
-            clear()
-            classSelect()
-        else:
-            failed=True
-            print('Please try again...')
-            time.sleep(1)
-            clear()
-            classSelect()
+    global summon
+    global warriorL
+    global warriorR
+    global warriorRL
+    global warriorRR
+    global archerL
+    global archerR
+    global earth
+    global fire
+    name = ''
+    summon=''
+    health=10
+    warriorL=False
+    warriorR=False
+    warriorRL=False
+    warriorRR=False
+    archerL=False
+    archerR=False
+    earth=False
+    fire=False
+    clear()
+    Main()
+    role=input('Pick a class: [1] Warrior  [2] Archer [3] Summoner \n')
+    try:
+        rolecheck = int(role)
+    except ValueError:
+        rolecheck = 0
+    if rolecheck == 1:
+        print('You have selected Warrior',end='\r')
+        name='Warrior'
+        level1_W()
+    elif rolecheck == 2:
+        print('You have selected Archer', end='\r')
+        name='Archer'
+        level1_A()
+    elif rolecheck == 3:
+        print('You have selected Summoner', end='\r')
+        name='Summoner'
+        level1_S()
+    elif rolecheck == 0:
+        print('Please try again...')
+        time.sleep(1)
+        clear()
+        classSelect()
+    else:
+        print('Please try again...')
+        time.sleep(1)
+        clear()
+        classSelect()
 def level1_W():
     global health
     global warriorL
@@ -150,6 +175,7 @@ def level1_S():
     global health
     global earth
     global fire
+    global summon
     clear()
     Main()
     hp()
@@ -160,16 +186,20 @@ def level1_S():
     except ValueError:
         path_c = 0
     if path_c == 0:
+        print('Please try again...')
+        time.sleep(1)
         clear()
         level1_S()
     else:
          if path_c == 1:
             print('You have completed the contract with the Earth Elemental')
             earth=True
+            summon='Earth Elemental'
             level2_S()
          elif path_c == 2:
             print('You have completed the contract with the Fire Elemental')
             fire=True
+            summon='Fire Elemental'
             level2_S()
          else:
             print('Please try again...')
@@ -178,6 +208,8 @@ def level1_S():
             level1_S()
 def level2_W():
     global health
+    global warriorRL
+    global warriorRR
     clear()
     Main()
     hp()
@@ -221,6 +253,8 @@ def level2_W():
                 print('You successfully defeat the 10 wild boars.')
                 print('However take 4 damage in the process.')
                 time.sleep(3)
+                warriorRL=True
+                level3_WR1()
             elif path_c == 2:
                 time.sleep(1)
                 clear()
@@ -232,6 +266,8 @@ def level2_W():
                 time.sleep(1)
                 print('You pass this stage with full health.')
                 time.sleep(3)
+                warriorRR=True
+                level3_WR1()
             else:
                 print('Please try again...')
                 time.sleep(2)
@@ -503,7 +539,7 @@ def level2_S():
     global health
     clear()
     Main()
-    hp()
+    hp2()
     if earth == True:
         print('You see a master wizzard ahead')
         time.sleep(2)
@@ -519,47 +555,133 @@ def level2_S():
             print('Please try again...')
             time.sleep(2)
             clear()
-            level2_S()
+            level2_S2()
         else:
             if path_c == 1:
                 time.sleep(1)
                 clear()
                 Main()
-                hp()
-                print('You successfully defeat the 10 wild boars.')
-                time.sleep(1)
-                print('However take 4 damage in the process.')
-                health = health - 4
-                time.sleep(1)
-                clear()
-                Main()
-                hp()
-                print('You successfully defeat the 10 wild boars.')
-                print('However take 4 damage in the process.')
+                hp2()
+                print('You start engaging in combat')
+                time.sleep(2)
+                print('You send your Earth Elemental ahead to attack.')
+                time.sleep(2)
+                print('The Master Wizzard casts a fireball and shoots it at you.')
+                time.sleep(2)
+                print('The Earth Elemental shields you from damage.')
+                time.sleep(2)
+                print('You then charge together with your Earth Elemental.')
+                time.sleep(2)
+                print('You catch the Master Wizzard off guard.')
+                time.sleep(2)
+                print('The Master Wizzard is defeated.')
+                time.sleep(2)
+                print('Legendary Staff Acquired!')
                 time.sleep(3)
             elif path_c == 2:
                 time.sleep(1)
                 clear()
                 Main()
-                hp()
-                print('Your attempt to sneak past was successful')
-                time.sleep(1)
-                print('The wild boars did not even notice you.')
-                time.sleep(1)
-                print('You pass this stage with full health.')
+                hp2()
+                print('You attempt to sneak past, however your Earth Elemental is too big.')
+                time.sleep(2)
+                print('The Master Wizzard notices you and starts casting fireball.')
+                time.sleep(2)
+                print('You panic and send your Earth Elemental to attack the Master Wizzard.')
+                time.sleep(3)
+                print('The fireball goes past the Earth Elemental and inflicts 5 damage.')
+                time.sleep(2)
+                health = health - 5
+                clear()
+                Main()
+                hp2()
+                print('You attempt to sneak past, however your Earth Elemental is too big.')
+                print('The Master Wizzard notices you and starts casting fireball.')
+                print('You panic and send your Earth Elemental to attack the Master Wizzard.')
+                print('The fireball goes past the Earth Elemental and inflicts 5 damage.')
+                time.sleep(2)
+                print('You then attack together with your Earth Elemental.')
+                time.sleep(2)
+                print('You finally defeat the Master Wizzard however the legendary staff...')
+                time.sleep(2)
+                print('Was destroyed in the midst.')
                 time.sleep(3)
             else:
                 print('Please try again...')
                 time.sleep(2)
                 clear()
                 level2_W()
-        action
-        clear()
-        level2_W2()
-    elif warriorR == True:
-        print('You have found a rusty sword, this is worse than your current one.')
-        print('You pass it without picking it up.')
-        print('You see 10 wild boars roaming the area')
+    elif fire == True:
+        print('Up ahead you see a rouge Water Elemental.')
+        time.sleep(2)
+        print('It seems to be blocking the exit')
+        time.sleep(2)
+        print('What do you do?')
+        time.sleep(2)
+        action=input('[1] Fight Together [2] Fight Alone \n')
+        try:
+            path_c = int(action)
+        except ValueError:
+            path_c = 0
+        if path_c == 0:
+            print('Please try again...')
+            time.sleep(2)
+            clear()
+            level2_S3()
+        else:
+            if path_c == 1:
+                time.sleep(1)
+                clear()
+                Main()
+                hp2()
+                print('You close in on the Water Elemental together.')
+                time.sleep(2)
+                print("However your Fire Elemental can't damage the Water Elemental!")
+                time.sleep(2)
+                print('The Water Elemental sees an opportunity to attack!')
+                time.sleep(2)
+                print('The Water Elemental attacks you both inflicting 4 damage.')
+                time.sleep(2)
+                health = health - 4
+                print('Your Fire Elemental is heavily wounded, you must now fight alone.')
+                time.sleep(2)
+                clear()
+                Main()
+                hp2()
+                print('You close in on the Water Elemental together.')
+                print("However your Fire Elemental can't damage the Water Elemental!")
+                print('The Water Elemental sees an opportunity to attack!')
+                print('The Water Elemental attacks you both inflicting 4 damage.')
+                print('Your Fire Elemental is heavily wounded, you must now fight alone.')
+                time.sleep(3)
+                print('You eventually defeat the Water Elemental however it leaves you wounded.')
+                time.sleep(3)
+            elif path_c == 2:
+                time.sleep(1)
+                clear()
+                Main()
+                hp2()
+                print('You draw your sword preparing for battle.')
+                time.sleep(2)
+                print('Your Fire Elemental would not be very useful in this fight.')
+                time.sleep(2)
+                print('You attack catching the Water Elemental off guard killing him instantly.')
+                time.sleep(3)
+            else:
+                print('Please try again...')
+                time.sleep(2)
+                clear()
+                level2_W()
+    else:
+        print('WTF')
+def level2_S2():
+    global health
+    clear()
+    Main()
+    hp2()
+    if earth == True:
+        print('You see a master wizzard ahead')
+        print('He seems to be holding a legendary staff')
         print('What do you do?')
         action=input('[1] Fight [2] Sneak Past \n')
         try:
@@ -570,41 +692,420 @@ def level2_S():
             print('Please try again...')
             time.sleep(2)
             clear()
-            level2_W()
+            level2_S2()
+        else:
+            if path_c == 1:
+                time.sleep(1)
+                clear()
+                Main()
+                hp2()
+                print('You start engaging in combat')
+                time.sleep(2)
+                print('You send your Earth Elemental ahead to attack.')
+                time.sleep(2)
+                print('The Master Wizzard casts a fireball and shoots it at you.')
+                time.sleep(2)
+                print('The Earth Elemental shields you from damage.')
+                time.sleep(2)
+                print('You then charge together with your Earth Elemental.')
+                time.sleep(2)
+                print('You catch the Master Wizzard off guard.')
+                time.sleep(2)
+                print('The Master Wizzard is defeated.')
+                time.sleep(2)
+                print('Legendary Staff Acquired!')
+                time.sleep(3)
+            elif path_c == 2:
+                time.sleep(1)
+                clear()
+                Main()
+                hp2()
+                print('You attempt to sneak past, however your Earth Elemental is too big.')
+                time.sleep(2)
+                print('The Master Wizzard notices you and starts casting fireball.')
+                time.sleep(2)
+                print('You panic and send your Earth Elemental to attack the Master Wizzard.')
+                time.sleep(3)
+                print('The fireball goes past the Earth Elemental and inflicts 5 damage.')
+                time.sleep(2)
+                health = health - 5
+                clear()
+                Main()
+                hp2()
+                print('You attempt to sneak past, however your Earth Elemental is too big.')
+                print('The Master Wizzard notices you and starts casting fireball.')
+                print('You panic and send your Earth Elemental to attack the Master Wizzard.')
+                print('The fireball goes past the Earth Elemental and inflicts 5 damage.')
+                time.sleep(2)
+                print('You then attack together with your Earth Elemental.')
+                time.sleep(2)
+                print('You finally defeat the Master Wizzard however the legendary staff...')
+                time.sleep(2)
+                print('Was destroyed in the midst.')
+                time.sleep(3)
+            else:
+                print('Please try again...')
+                time.sleep(2)
+                clear()
+                level2_S2()
+def level2_S3():
+    global health
+    clear()
+    Main()
+    hp2()
+    print('Up ahead you see a rouge Water Elemental.')
+    print('It seems to be blocking the exit')
+    print('What do you do?')
+    action=input('[1] Fight Together [2] Fight Alone \n')
+    try:
+        path_c = int(action)
+    except ValueError:
+        path_c = 0
+    if path_c == 0:
+        print('Please try again...')
+        time.sleep(2)
+        clear()
+        level2_S3()
+    else:
+        if path_c == 1:
+            time.sleep(1)
+            clear()
+            Main()
+            hp2()
+            print('You close in on the Water Elemental together.')
+            time.sleep(2)
+            print("However your Fire Elemental can't damage the Water Elemental!")
+            time.sleep(2)
+            print('The Water Elemental sees an opportunity to attack!')
+            time.sleep(2)
+            print('The Water Elemental attacks you both inflicting 4 damage.')
+            time.sleep(2)
+            health = health - 4
+            print('Your Fire Elemental is heavily wounded, you must now fight alone.')
+            time.sleep(2)
+            clear()
+            Main()
+            hp2()
+            print('You close in on the Water Elemental together.')
+            print("However your Fire Elemental can't damage the Water Elemental!")
+            print('The Water Elemental sees an opportunity to attack!')
+            print('The Water Elemental attacks you both inflicting 4 damage.')
+            print('Your Fire Elemental is heavily wounded, you must now fight alone.')
+            time.sleep(3)
+            print('You eventually defeat the Water Elemental however it leaves you wounded.')
+            time.sleep(3)
+        elif path_c == 2:
+            time.sleep(1)
+            clear()
+            Main()
+            hp2()
+            print('You draw your sword preparing for battle.')
+            time.sleep(2)
+            print('Your Fire Elemental would not be very useful in this fight.')
+            time.sleep(2)
+            print('You attack catching the Water Elemental off guard killing him instantly.')
+            time.sleep(3)
+        else:
+            print('Please try again...')
+            time.sleep(2)
+            clear()
+            level2_S3()
+def level3_WR1():
+    global health
+    clear()
+    Main()
+    hp()
+    if warriorRL == True:
+        print('You see a door ahead...')
+        time.sleep(2)
+        print('However there seems to be 10 guards in front of it.')
+        time.sleep(2)
+        print('What do you do?')
+        time.sleep(1)
+        action=input('[1] Fight [2] Sneak Past\n')
+        try:
+            path_c = int(action)
+        except ValueError:
+            path_c = 0
+        if path_c == 0:
+            print('Please try again...')
+            time.sleep(2)
+            clear()
+            level3_WR1()
         else:
             if path_c == 1:
                 time.sleep(1)
                 clear()
                 Main()
                 hp()
-                print('You successfully defeat the 10 wild boars.')
-                time.sleep(1)
-                print('However take 4 damage in the process.')
-                health = health - 4
+                print('With the sharp sword in your hand, you start attacking.')
+                time.sleep(2)
+                print('You take down 3, this is looking good.')
+                time.sleep(2)
+                print('However from the door appears a Legendary Battlemaster.')
+                time.sleep(3)
+                print('The rest of the guardsmen are fueled with confidence.')
+                time.sleep(2)
+                print('They all start charging, you try to parry them away..')
+                time.sleep(2)
+                print('They eventually overwhelm you.')
+                time.sleep(2)
+                print('They inflict 6 damage.')
+                health = health - 6
                 time.sleep(1)
                 clear()
                 Main()
                 hp()
-                print('You successfully defeat the 10 wild boars.')
-                print('However take 4 damage in the process.')
-                time.sleep(3)
+                print('With the sharp sword in your hand, you start attacking.')
+                print('You take down 3, this is looking good.')
+                print('However from the door appears a Legendary Battlemaster.')
+                print('The rest of the guardsmen are fueled with confidence.')
+                print('They all start charging, you try to parry them away..')
+                print('They eventually overwhelm you.')
+                print('They inflict 6 damage.')
+                time.sleep(2)
+                print('\nGAME OVER!')
+                action=input('Try Again? [Y/N]\n')
+                if action == 'Y' or action =='y':
+                    classSelect()
+                elif action =='N' or action =='n':
+                    quit()
+                else:
+                    print('Please try again...')
+                    time.sleep(1)
+                    level3_WRL()
             elif path_c == 2:
                 time.sleep(1)
                 clear()
                 Main()
                 hp()
-                print('Your attempt to sneak past was successful')
-                time.sleep(1)
-                print('The wild boars did not even notice you.')
-                time.sleep(1)
-                print('You pass this stage with full health.')
+                print('You plan out your route.')
+                time.sleep(2)
+                print("You see 4 Archers and 6 Warriors.")
+                time.sleep(2)
+                print('You follow the right wall, however half-way through..')
+                time.sleep(3)
+                print('An Archer spots you, he shouts out to the other guards.')
+                time.sleep(2)
+                print('You start running. The archers fire at you, one arrow hits your back, the other hits your leg.')
+                time.sleep(4)
+                print("However you made it to the exit, they won't be able to follow you now.")
+                time.sleep(3)
+                print('In total they dealt 4 damage.')
+                time.sleep(2)
+                health = health - 4
+                clear()
+                Main()
+                hp()
+                print('You plan out your route.')
+                print("You see 4 Archers and 6 Warriors.")
+                print('You follow the right wall, however half-way through..')
+                print('An Archer spots you, he shouts out to the other guards.')
+                print('You start running. The archers fire at you, one arrow hits your back, the other hits your leg.')
+                print("However you made it to the exit, they won't be able to follow you now.")
+                print('In total they dealt 4 damage.')
                 time.sleep(3)
             else:
                 print('Please try again...')
                 time.sleep(2)
                 clear()
-                level2_W()
+                level3_WR1()
+    elif warriorRR == True:
+        print('Up ahead you see an old witch.')
+        time.sleep(2)
+        print('She seems to be making Health Potions.')
+        time.sleep(2)
+        print('Behind her are a stack off 3 Health Potions.')
+        time.sleep(2)
+        print('They seem to recover 1 Health per use.')
+        time.sleep(2)
+        print('What do you do?')
+        action=input('[1] Fight the Witch and get 3 [2] Buy 1 with your Sharp Sword \n')
+        try:
+            path_c = int(action)
+        except ValueError:
+            path_c = 0
+        if path_c == 0:
+            print('Please try again...')
+            time.sleep(2)
+            clear()
+            level3_WR1()
+        else:
+            if path_c == 1:
+                time.sleep(1)
+                clear()
+                Main()
+                hp()
+                print('You ready yourself for battle.')
+                time.sleep(2)
+                print('The old witch notices you she quickly retreats back into her home.')
+                time.sleep(3)
+                print('You follow her, however...')
+                time.sleep(2)
+                print('She had actually laid traps around the area, and you have set them off.')
+                time.sleep(3)
+                print('They deal 1 poison damage over 2 turns.')
+                time.sleep(3)
+                health = health - 1
+                clear()
+                Main()
+                hp()
+                print('You ready yourself for battle.')
+                print('The old witch notices you she quickly retreats back into her home.')
+                print('You follow her, however...')
+                print('She had actually laid traps around the area, and you have set them off.')
+                print('They deal 1 poison damage over 2 turns.')
+                print('You then enter her home hoping to end this quickly.')
+                time.sleep(3)
+                print('But she splashes a potion onto you that makes you fall asleep.')
+                time.sleep(3)
+                health = health - 1
+                clear()
+                Main()
+                hp()
+                print('You ready yourself for battle.')
+                print('The old witch notices you she quickly retreats back into her home.')
+                print('You follow her, however...')
+                print('She had actually laid traps around the area, and you have set them off.')
+                print('They deal 1 poison damage over 2 turns.')
+                print('You then enter her home hoping to end this quickly.')
+                print('But she splashes a potion onto you that makes you fall asleep.')
+                time.sleep(3)
+                health = health - 1
+                clear()
+                Main()
+                hp()
+                print('You ready yourself for battle.')
+                print('The old witch notices you she quickly retreats back into her home.')
+                print('You follow her, however...')
+                print('She had actually laid traps around the area, and you have set them off.')
+                print('They deal 1 poison damage over 2 turns.')
+                print('You then enter her home hoping to end this quickly.')
+                print('But she splashes a potion onto you that makes you fall asleep.')
+                time.sleep(3)
+                health = health - 1
+                clear()
+                Main()
+                hp()
+                print('You ready yourself for battle.')
+                print('The old witch notices you she quickly retreats back into her home.')
+                print('You follow her, however...')
+                print('She had actually laid traps around the area, and you have set them off.')
+                print('They deal 1 poison damage over 2 turns.')
+                print('You then enter her home hoping to end this quickly.')
+                print('But she splashes a potion onto you that makes you fall asleep.')
+                time.sleep(3)
+                health = health - 1
+                clear()
+                Main()
+                hp()
+                print('You ready yourself for battle.')
+                print('The old witch notices you she quickly retreats back into her home.')
+                print('You follow her, however...')
+                print('She had actually laid traps around the area, and you have set them off.')
+                print('They deal 1 poison damage over 2 turns.')
+                print('You then enter her home hoping to end this quickly.')
+                print('But she splashes a potion onto you that makes you fall asleep.')
+                time.sleep(3)
+                health = health - 1
+                clear()
+                Main()
+                hp()
+                print('You ready yourself for battle.')
+                print('The old witch notices you she quickly retreats back into her home.')
+                print('You follow her, however...')
+                print('She had actually laid traps around the area, and you have set them off.')
+                print('They deal 1 poison damage.')
+                print('You then enter her home hoping to end this quickly.')
+                print('But she splashes a potion onto you that makes you fall asleep.')
+                time.sleep(4)
+                clear()
+                Main()
+                hp()
+                print("You wake up to find that you've been stripped off all your belongings.")
+                time.sleep(2)
+                print("She has also taken your Sharp Sword.")
+                time.sleep(2)
+                print("You walk back the way you came until you see the Witch's home again.")
+                time.sleep(4)
+                print('You begin knocking on the door asking for your items back.')
+                time.sleep(3)
+                print('In return she stabs you through the door with your very own Sharp Sword.')
+                time.sleep(3)
+                print('You begin to lose consciousness and collapse.')
+                health = 0
+                clear()
+                Main()
+                hp()
+                print("You wake up to find that you've been stripped off all your belongings.")
+                print("She has also taken your Sharp Sword.")
+                print("You walk back the way you came until you see the Witch's home again.")
+                print('You begin knocking on the door asking for your items back.')
+                print('In return she stabs you through the door with your very own Sharp Sword.')
+                print('You begin to lose consciousness and collapse.')
+                time.sleep(2)
+                print('\nGAME OVER!')
+                action=input('Try Again? [Y/N]\n')
+                if action == 'Y' or action =='y':
+                    classSelect()
+                elif action =='N' or action =='n':
+                    quit()
+                else:
+                    print('Please try again...')
+                    time.sleep(1)
+                    level3_WRR()
+
+            elif path_c == 2:
+                time.sleep(1)
+                clear()
+                Main()
+                hp()
+            else:
+                print('Please try again...')
+                time.sleep(2)
+                clear()
+                level3_WR1()
     else:
         print('WTF')
-
+def level3_WRL():
+    clear()
+    Main()
+    hp()
+    print('With the sharp sword in your hand, you start attacking.')
+    print('You take down 3, this is looking good.')
+    print('However from the door appears a Legendary Battlemaster.')
+    print('The rest of the guardsmen are fueled with confidence.')
+    print('They all start charging, you try to parry them away..')
+    print('They eventually overwhelm you.')
+    print('They inflict 6 damage.')
+    print('\nGAME OVER!')
+    action=input('Try Again? [Y/N]\n')
+    if action == 'Y' or action =='y':
+        classSelect()
+    elif action =='N' or action =='n':
+        quit()
+    else:
+        print('Please try again...')
+        time.sleep(1)
+        level3_WRL()
+def level3_WRR():
+    clear()
+    Main()
+    hp()
+    print("You wake up to find that you've been stripped off all your belongings.")
+    print("She has also taken your Sharp Sword.")
+    print("You walk back the way you came until you see the Witch's home again.")
+    print('You begin knocking on the door asking for your items back.')
+    print('In return she stabs you through the door with your very own Sharp Sword.')
+    print('You begin to lose consciousness and collapse.')
+    print('\nGAME OVER!')
+    action=input('Try Again? [Y/N]\n')
+    if action == 'Y' or action =='y':
+        classSelect()
+    elif action =='N' or action =='n':
+        quit()
+    else:
+        print('Please try again...')
+        time.sleep(1)
+        level3_WRR()
 classSelect()
