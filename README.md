@@ -23,8 +23,13 @@
 
 # Creator and Co-Creators
 * Legacy47
-* 
-* Aliary
+
+* Aliary (https://github.com/Alister-Wong)
 * World Wide Web :^)
+
+
+
+
+
 
 *** Dragonrace Idea from RaveMaster
