@@ -40,47 +40,47 @@ music = pyglet.media.load('Epic.mp3')
 os.system("title "+Title)
 def Main():
     global mode
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print('      Options: Currently Disabled until next Choice.\n')
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
 def Main2():
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print('      Dialog Speed: [1] Original Dialog [2] Quick Dialog [3] Instant Dialog \n')
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
 def Main3():
     global mode
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print('      Options: [Q] Quit [P] Play Music [S] Stop Music [B] Back to Dialog Speed \n')
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
 def Main4():
     global mode
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print("      Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu [I] Inventory \n")
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
 def Main5():
     global mode
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print("      Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu\n")
-    print('----------------------------------------------------------------------------------------------------')
+    print('---------------------------------------------------------------------------------------------------')
 def inventoryW():
     global weaponW
     global shieldW
@@ -167,64 +167,12 @@ def loading():
         clear()
 def classSelect():
     os.system("mode con: cols=100 lines=40")
-    global weaponW
-    global shieldW
-    global armourW
-    global weaponWE
-    global shieldWE
-    global armourWE
-    global gold
     global player
     global Music
-    global mode
     global Check
     global Dialog
-    global health
-    global name
-    global summon
-    global warriorL
-    global warriorR
-    global warriorRL
-    global warriorRR
-    global warriorLL
-    global warriorLR
-    global warriorLLL
-    global warriorLRR
-    global warriorRLR
-    global warriorRRR
-    global warriorLRRL
-    global archerL
-    global archerR
-    global earth
-    global fire
-    name = ''
-    summon=''
-    mode=''
-    weaponW='Sword'
-    shieldW=''
-    armourW='Leather Armour'
-    weaponWE='Sword'
-    shieldWE=''
-    armourWE='Leather Armour'
-    gold=0
-    health=10
     Check=False
     Dialog=0
-    warriorL=False
-    warriorR=False
-    warriorRL=False
-    warriorRR=False
-    warriorLL=False
-    warriorLR=False
-    warriorLLL=False
-    warriorLRR=False
-    warriorRLR=False
-    warriorRRR=False
-    warriorLRRL=False
-    archerL=False
-    archerR=False
-    earth=False
-    fire=False
     if Music == False:
         player.queue(music)
         player.play()
@@ -362,8 +310,10 @@ def level1_W():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level1_W()
     elif action == 'S' or action == 's':
         songS()
+        level1_W()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -426,8 +376,10 @@ def level1_A():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level1_A()
     elif action == 'S' or action == 's':
         songS()
+        level1_A()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -509,8 +461,10 @@ def level1_S():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level1_S()
     elif action == 'S' or action == 's':
         songS()
+        level1_S()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -601,8 +555,10 @@ def level2_W():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level2_W()
         elif action == 'S' or action == 's':
             songS()
+            level2_W()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -691,8 +647,10 @@ def level2_W2():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level2_W2()
     elif action == 'S' or action == 's':
         songS()
+        level2_W2()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -787,8 +745,10 @@ def level2_A():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level2_A()
         elif action == 'S' or action == 's':
             songS()
+            level2_A()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -894,8 +854,10 @@ def level2_A3():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level2_A3()
     elif action == 'S' or action == 's':
         songS()
+        level2_A3()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -1038,8 +1000,10 @@ def level2_S():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level2_S()
         elif action == 'S' or action == 's':
             songS()
+            level2_S()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -1148,8 +1112,10 @@ def level2_S():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level2_S()
         elif action == 'S' or action == 's':
             songS()
+            level2_S()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -1248,8 +1214,10 @@ def level3_WL1():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level3_WL1()
         elif action == 'S' or action == 's':
             songS()
+            level3_WL1()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -1414,8 +1382,10 @@ def level3_WL2():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level3_WL2()
     elif action == 'S' or action == 's':
         songS()
+        level3_WL2()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -1578,8 +1548,10 @@ def level3_WR1():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level3_WR1()
         elif action == 'S' or action == 's':
             songS()
+            level3_WR1()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -1692,8 +1664,10 @@ def level3_WR1():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level3_WR1()
         elif action == 'S' or action == 's':
             songS()
+            level3_WR1()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -1937,8 +1911,10 @@ def level4_W():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level4_W()
     elif action == 'S' or action == 's':
         songS()
+        level4_W()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -2140,8 +2116,10 @@ def level4_WRLR2():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level4_WRLR2()
     elif action == 'S' or action == 's':
         songS()
+        level4_WRLR2()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -2341,8 +2319,10 @@ def level4_WRRR():
             quit()
         elif action == 'P' or action == 'p':
             songP()
+            level4_WRRR()
         elif action == 'S' or action == 's':
             songS()
+            level4_WRRR()
         elif action == 'M' or action == 'm':
             classSelect2()
         else:
@@ -2494,8 +2474,10 @@ def level5_W():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level5_W()
     elif action == 'S' or action == 's':
         songS()
+        level5_W()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -2608,8 +2590,10 @@ def level5_W2():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        level5_W2()
     elif action == 'S' or action == 's':
         songS()
+        level5_W2()
     elif action == 'M' or action == 'm':
         classSelect2()
     else:
@@ -2701,8 +2685,10 @@ def levelShop():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        levelShop()
     elif action == 'S' or action == 's':
         songS()
+        levelShop()
     elif action == 'M' or action == 'm':
         classSelect2()
     elif action =='I' or action == 'i':
@@ -2732,8 +2718,10 @@ def levelShop_W():
         quit()
     elif action == 'P' or action == 'p':
         songP()
+        levelShop_W()
     elif action == 'S' or action == 's':
         songS()
+        levelShop_W()
     elif action == 'M' or action == 'm':
         classSelect2()
     elif action == 'R' or action == 'r':
@@ -2761,8 +2749,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -2784,8 +2774,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -2810,8 +2802,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -2834,8 +2828,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -2858,8 +2854,10 @@ def levelShop_W():
                         quit()
                     elif action == 'P' or action == 'p':
                         songP()
+                        levelShop_W()
                     elif action == 'S' or action == 's':
                         songS()
+                        levelShop_W()
                     elif action == 'M' or action == 'm':
                         classSelect2()
                     else:
@@ -2881,8 +2879,10 @@ def levelShop_W():
                         quit()
                     elif action == 'P' or action == 'p':
                         songP()
+                        levelShop_W()
                     elif action == 'S' or action == 's':
                         songS()
+                        levelShop_W()
                     elif action == 'M' or action == 'm':
                         classSelect2()
                     else:
@@ -2907,8 +2907,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -2931,8 +2933,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -2955,8 +2959,10 @@ def levelShop_W():
                         quit()
                     elif action == 'P' or action == 'p':
                         songP()
+                        levelShop_W()
                     elif action == 'S' or action == 's':
                         songS()
+                        levelShop_W()
                     elif action == 'M' or action == 'm':
                         classSelect2()
                     else:
@@ -2978,8 +2984,10 @@ def levelShop_W():
                         quit()
                     elif action == 'P' or action == 'p':
                         songP()
+                        levelShop_W()
                     elif action == 'S' or action == 's':
                         songS()
+                        levelShop_W()
                     elif action == 'M' or action == 'm':
                         classSelect2()
                     else:
@@ -3004,8 +3012,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3028,8 +3038,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3051,8 +3063,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3077,8 +3091,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3101,8 +3117,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3125,8 +3143,10 @@ def levelShop_W():
                         quit()
                     elif action == 'P' or action == 'p':
                         songP()
+                        levelShop_W()
                     elif action == 'S' or action == 's':
                         songS()
+                        levelShop_W()
                     elif action == 'M' or action == 'm':
                         classSelect2()
                     else:
@@ -3148,8 +3168,10 @@ def levelShop_W():
                         quit()
                     elif action == 'P' or action == 'p':
                         songP()
+                        levelShop_W()
                     elif action == 'S' or action == 's':
                         songS()
+                        levelShop_W()
                     elif action == 'M' or action == 'm':
                         classSelect2()
                     else:
@@ -3174,8 +3196,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3198,8 +3222,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3221,8 +3247,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
@@ -3247,8 +3275,10 @@ def levelShop_W():
                     quit()
                 elif action == 'P' or action == 'p':
                     songP()
+                    levelShop_W()
                 elif action == 'S' or action == 's':
                     songS()
+                    levelShop_W()
                 elif action == 'M' or action == 'm':
                     classSelect2()
                 else:
