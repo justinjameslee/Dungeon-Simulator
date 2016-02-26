@@ -17,9 +17,9 @@
 # Work In Progress
 * Boss Fight
 * Colors?
-* Warrior Arc (89% Completed)
-* Archer Arc
-* Summoner Arc
+* Warrior Arc (89% Completed) ~
+* Archer Arc (37% Completed) ~
+* Summoner Arc (37% Completed) ~
 
 # Creator and Co-Creators
 * Legacy47
