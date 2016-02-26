@@ -21,8 +21,9 @@
 * Archer Arc
 * Summoner Arc
 
-# Creators and Co-Creators
+# Creator and Co-Creators
 * Legacy47
+* 
 * Aliary
 * World Wide Web :^)
 
