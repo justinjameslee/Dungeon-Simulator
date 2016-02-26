@@ -21,6 +21,9 @@
 * Archer Arc
 * Summoner Arc
 
+# Creators and Co-Creators
+* Legacy47
+* Aliary
+* World Wide Web :^)
 
-
-*** Inspired from RaveMaster
+*** Dragonrace Idea from RaveMaster
