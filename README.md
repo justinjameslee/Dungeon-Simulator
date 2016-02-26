@@ -1,12 +1,12 @@
 # Dungeon-Simulator
-Python Text-Based Game
+* Python Text-Based Game
 
 # Features
 * Health
 * Gold
 * Items (Weapons, Shields, Armour etc..)
 * Item Shop
-* Fantasy (Goblins, Ogres, Witches, Dragonrace^ etc..) 
+* Fantasy (Goblins, Ogres, Witches, Dragonrace*** etc..) 
 * Classes (Warrior, Archer, Summoner)
 * Interface
 * Main Menu
@@ -23,4 +23,4 @@ Python Text-Based Game
 
 
 
-^ Inspired from RaveMaster
+*** Inspired from RaveMaster
