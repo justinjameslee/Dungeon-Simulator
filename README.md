@@ -21,9 +21,8 @@
 * Archer Arc (37% Completed) ~
 * Summoner Arc (37% Completed) ~
 
-# Creator and Co-Creators
+# Credits
 * Justin Lee (https://github.com/Legacy47)
-
 * Alister Wong (https://github.com/Alister-Wong)
 * World Wide Web :^)
 
