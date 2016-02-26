@@ -40,47 +40,47 @@ music = pyglet.media.load('Epic.mp3')
 os.system("title "+Title)
 def Main():
     global mode
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print('      Options: Currently Disabled until next Choice.\n')
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
 def Main2():
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print('      Dialog Speed: [1] Original Dialog [2] Quick Dialog [3] Instant Dialog \n')
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
 def Main3():
     global mode
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print('      Options: [Q] Quit [P] Play Music [S] Stop Music [B] Back to Dialog Speed \n')
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
 def Main4():
     global mode
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print("      Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu [I] Inventory \n")
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
 def Main5():
     global mode
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
     print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
     print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
     print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
     print("      Playthrough Mode:", mode, '\n')
     print("      Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu\n")
-    print('-----------------------------------------------------------------------------------------')
+    print('----------------------------------------------------------------------------------------------------')
 def inventoryW():
     global weaponW
     global shieldW
@@ -89,7 +89,8 @@ def inventoryW():
         clear()
         Main()
         hp()
-        print('\nWeapons: ',weaponW)
+        print('\nInventory')
+        print('Weapons: ',weaponW)
         print('Shield: ',shieldW)
         print('Armour: ',armourW)
         print('\nCurrently Equipped')
@@ -107,11 +108,10 @@ def ShopWeapon():
     print('Weapons: ')
     print('[1] Sword          | Attack: 5   (5 Gold)')
     print('[2] Sharp Sword    | Attack: 8   (8 Gold)')
-    print('[3] Golden Sword   | Attack: 15  (15 Gold)')
-    print('[4] Dual Swords    | Attack: 10  (10 Gold)')
+    print('[3] Longsword      | Attack: 10  (10 Gold)')
+    print('[4] Golden Sword   | Attack: 15  (15 Gold)')
     print('[5] Wooden Shield  | Block: 2    (2 Gold)')
     print('[6] Iron Shield    | Block: 5    (5 Gold)')
-    print("Dual Swords not combatiable with Shields. ")
 def hp():
     global health
     global name
@@ -166,7 +166,7 @@ def loading():
         time.sleep(1)
         clear()
 def classSelect():
-    os.system("mode con: cols=90 lines=40")
+    os.system("mode con: cols=100 lines=40")
     global weaponW
     global shieldW
     global armourW
@@ -256,7 +256,7 @@ def classSelect():
             continue
     classSelect2()
 def classSelect2():
-    os.system("mode con: cols=90 lines=40")
+    os.system("mode con: cols=100 lines=40")
     global weaponW
     global shieldW
     global armourW
@@ -2723,11 +2723,10 @@ def levelShop_W():
     print('Weapons: ')
     print('[1] Sword          | Attack: 5   (5 Gold)')
     print('[2] Sharp Sword    | Attack: 8   (8 Gold)')
-    print('[3] Golden Sword   | Attack: 15  (15 Gold)')
-    print('[4] Dual Swords    | Attack: 10  (10 Gold)')
+    print('[3] Longsword      | Attack: 10  (10 Gold)')
+    print('[4] Golden Sword   | Attack: 15  (15 Gold)')
     print('[5] Wooden Shield  | Block: 2    (2 Gold)')
     print('[6] Iron Shield    | Block: 5    (5 Gold)')
-    print("Dual Swords not combatiable with Shields. ")
     action=input('Selection: ')
     if action == 'Q' or action == 'q':
         quit()
@@ -2751,7 +2750,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: Invalid Selection')
+                print('Selection: ',action)
                 print('Insufficient Gold.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -2774,7 +2773,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 1')
+                print('Selection: ',action)
                 print('You already own this.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -2800,7 +2799,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 1')
+                print('Selection: ',action)
                 print('You have acquired a Sword.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -2824,7 +2823,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: Invalid Selection')
+                print('Selection: ',action)
                 print('Insufficient Gold.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -2848,7 +2847,7 @@ def levelShop_W():
                     Main4()
                     hp()
                     ShopWeapon()
-                    print('Selection: 2')
+                    print('Selection: ',action)
                     print('Your weapon is far greater than this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
@@ -2871,7 +2870,7 @@ def levelShop_W():
                     Main4()
                     hp()
                     ShopWeapon()
-                    print('Selection: 2')
+                    print('Selection: ',action)
                     print('You already own this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
@@ -2897,7 +2896,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 2')
+                print('Selection: ',action)
                 print('You have acquired a Sharp Sword.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -2915,13 +2914,110 @@ def levelShop_W():
                 else:
                     continue
     elif action == '3':
+        if gold < 10:
+            while True:
+                clear()
+                Main4()
+                hp()
+                ShopWeapon()
+                print('Selection: ',action)
+                print('Insufficient Gold.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_W()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                elif action == 'S' or action == 's':
+                    songS()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+        elif weaponWE == 'Longsword' or 'Longsword' in weaponW:
+            if weaponWE == 'Golden Sword':
+                while True:
+                    clear()
+                    Main4()
+                    hp()
+                    ShopWeapon()
+                    print('Selection: ',action)
+                    print('Your weapon is far greater than this.')
+                    action=input('[Enter/Return] to Continue [I] Inventory\n')
+                    if action == "":
+                        levelShop_W()
+                    elif action == 'I' or action == 'i':
+                        inventoryW()
+                    elif action == 'Q' or action == 'q':
+                        quit()
+                    elif action == 'P' or action == 'p':
+                        songP()
+                    elif action == 'S' or action == 's':
+                        songS()
+                    elif action == 'M' or action == 'm':
+                        classSelect2()
+                    else:
+                        continue
+            else:
+                while True:
+                    clear()
+                    Main4()
+                    hp()
+                    ShopWeapon()
+                    print('Selection: ',action)
+                    print('You already own this.')
+                    action=input('[Enter/Return] to Continue [I] Inventory\n')
+                    if action == "":
+                        levelShop_W()
+                    elif action == 'I' or action == 'i':
+                        inventoryW()
+                    elif action == 'Q' or action == 'q':
+                        quit()
+                    elif action == 'P' or action == 'p':
+                        songP()
+                    elif action == 'S' or action == 's':
+                        songS()
+                    elif action == 'M' or action == 'm':
+                        classSelect2()
+                    else:
+                        continue
+        elif gold == 10 or gold > 10:
+            gold = gold - 10
+            weaponWE = 'Longsword'
+            weaponW += ' Longsword'
+            while True:
+                clear()
+                Main4()
+                hp()
+                ShopWeapon()
+                print('Selection: ',action)
+                print('You have acquired a Longsword.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_W()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                elif action == 'S' or action == 's':
+                    songS()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+    elif action == '4':
         if gold < 15:
             while True:
                 clear()
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: Invalid Selection')
+                print('Selection: ',action)
                 print('Insufficient Gold.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -2944,7 +3040,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 3')
+                print('Selection: ',action)
                 print('You already own this.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -2970,105 +3066,8 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 3')
+                print('Selection: ',action)
                 print('You have acquired a Golden Sword.')
-                action=input('[Enter/Return] to Continue [I] Inventory\n')
-                if action == "":
-                    levelShop_W()
-                elif action == 'I' or action == 'i':
-                    inventoryW()
-                elif action == 'Q' or action == 'q':
-                    quit()
-                elif action == 'P' or action == 'p':
-                    songP()
-                elif action == 'S' or action == 's':
-                    songS()
-                elif action == 'M' or action == 'm':
-                    classSelect2()
-                else:
-                    continue
-    elif action == '4':
-        if gold < 10:
-            while True:
-                clear()
-                Main4()
-                hp()
-                ShopWeapon()
-                print('Selection: Invalid Selection')
-                print('Insufficient Gold.')
-                action=input('[Enter/Return] to Continue [I] Inventory\n')
-                if action == "":
-                    levelShop_W()
-                elif action == 'I' or action == 'i':
-                    inventoryW()
-                elif action == 'Q' or action == 'q':
-                    quit()
-                elif action == 'P' or action == 'p':
-                    songP()
-                elif action == 'S' or action == 's':
-                    songS()
-                elif action == 'M' or action == 'm':
-                    classSelect2()
-                else:
-                    continue
-        elif weaponWE == 'Dual Swords' or 'Dual Swords' in weaponW:
-            if weaponWE == 'Golden Sword':
-                while True:
-                    clear()
-                    Main4()
-                    hp()
-                    ShopWeapon()
-                    print('Selection: 4')
-                    print('Your weapon is far greater than this.')
-                    action=input('[Enter/Return] to Continue [I] Inventory\n')
-                    if action == "":
-                        levelShop_W()
-                    elif action == 'I' or action == 'i':
-                        inventoryW()
-                    elif action == 'Q' or action == 'q':
-                        quit()
-                    elif action == 'P' or action == 'p':
-                        songP()
-                    elif action == 'S' or action == 's':
-                        songS()
-                    elif action == 'M' or action == 'm':
-                        classSelect2()
-                    else:
-                        continue
-            else:
-                while True:
-                    clear()
-                    Main4()
-                    hp()
-                    ShopWeapon()
-                    print('Selection: 4')
-                    print('You already own this.')
-                    action=input('[Enter/Return] to Continue [I] Inventory\n')
-                    if action == "":
-                        levelShop_W()
-                    elif action == 'I' or action == 'i':
-                        inventoryW()
-                    elif action == 'Q' or action == 'q':
-                        quit()
-                    elif action == 'P' or action == 'p':
-                        songP()
-                    elif action == 'S' or action == 's':
-                        songS()
-                    elif action == 'M' or action == 'm':
-                        classSelect2()
-                    else:
-                        continue
-        elif gold == 10 or gold > 10:
-            gold = gold - 10
-            weaponWE = 'Dual Swords'
-            weaponW += ' Dual Swords'
-            while True:
-                clear()
-                Main4()
-                hp()
-                ShopWeapon()
-                print('Selection: 4')
-                print('You have acquired a Dual Swords.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
                     levelShop_W()
@@ -3091,7 +3090,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: Invalid Selection')
+                print('Selection: ',action)
                 print('Insufficient Gold.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -3115,7 +3114,7 @@ def levelShop_W():
                     Main4()
                     hp()
                     ShopWeapon()
-                    print('Selection: 5')
+                    print('Selection: ',action)
                     print('Your shield is far greater than this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
@@ -3138,7 +3137,7 @@ def levelShop_W():
                     Main4()
                     hp()
                     ShopWeapon()
-                    print('Selection: 5')
+                    print('Selection: ',action)
                     print('You already own this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
@@ -3164,7 +3163,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 5')
+                print('Selection: ',action)
                 print('You have acquired a Wooden Shield.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -3188,7 +3187,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapn()
-                print('Selection: Invalid Selection')
+                print('Selection: ',action)
                 print('Insufficient Gold.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -3211,7 +3210,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 6')
+                print('Selection: ',action)
                 print('You already own this.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
@@ -3237,7 +3236,7 @@ def levelShop_W():
                 Main4()
                 hp()
                 ShopWeapon()
-                print('Selection: 6')
+                print('Selection: ',action)
                 print('You have acquired a Iron Shield.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
                 if action == "":
