@@ -22,9 +22,9 @@
 * Summoner Arc (37% Completed) ~
 
 # Creator and Co-Creators
-* Legacy47
+* Justin Lee (https://github.com/Legacy47)
 
-* Aliary (https://github.com/Alister-Wong)
+* Alister Wong (https://github.com/Alister-Wong)
 * World Wide Web :^)
 
 
