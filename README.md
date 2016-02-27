@@ -13,10 +13,15 @@
 * Music
 * Inventory
 * Dialog Speed Interchangable
+* Text-Based
+* Choose your own adventure style
+* Story Rich (Some english grammatical and spelling errors)
 
 # Work In Progress
-* Boss Fight
+* Boss Fight (0% Completed) 
 * Colors?
+* How to Play?
+* Combat System (14% Completed) ~
 * Warrior Arc (92% Completed) ~
 * Archer Arc (37% Completed) ~
 * Summoner Arc (37% Completed) ~
