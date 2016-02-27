@@ -1,5 +1,6 @@
 import time
 import os
+import random
 import msvcrt
 import pyglet
 import sys
@@ -15,6 +16,8 @@ weaponW='Sword'
 shieldW=''
 armourW='Leather Armour'
 Title="Dungeon Simulator"
+attack=''
+block=0
 gold=0
 health=10
 Check=False
@@ -38,57 +41,96 @@ fire=False
 player = pyglet.media.Player()
 music = pyglet.media.load('Epic.mp3')
 os.system("title "+Title)
+#def sword():
+    #print("           |>---=[0]-]======================>    <=============================[-[0]=---<| \n")
+def dungeon():
+    print('---------------------------------------------------------------------------------------------------')
+    print('           ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
+    print('           |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
+    print('           |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
+def line():
+    print('---------------------------------------------------------------------------------------------------')
+def load1():
+    print('----------------------------------------')
+    print('  _    ____ ____ ___  _ _  _ ____')
+    print('  |    |  | |__| |  \ | |\ | | __')
+def load2():
+    print('----------------------------------------')
 def Main():
     global mode
-    print('---------------------------------------------------------------------------------------------------')
-    print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
-    print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
-    print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
-    print("      Playthrough Mode:", mode, '\n')
-    print('      Options: Currently Disabled until next Choice.\n')
-    print('---------------------------------------------------------------------------------------------------')
+    global health
+    global gold
+    global name
+    dungeon()
+    print("           Playthrough Mode:", mode, '\n')
+    print('           Options: Currently Disabled until next Choice.\n')
+    print('           Stats:  Health: ',health,' Gold: ',gold,' Class: ',name,'\n')
+    line()
 def Main2():
-    print('---------------------------------------------------------------------------------------------------')
-    print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
-    print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
-    print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
-    print('      Dialog Speed: [1] Original Dialog [2] Quick Dialog [3] Instant Dialog \n')
-    print('---------------------------------------------------------------------------------------------------')
+    dungeon()
+    print('           Dialog Speed: [1] Original Dialog [2] Quick Dialog [3] Instant Dialog \n')
+    line()
 def Main3():
     global mode
-    print('---------------------------------------------------------------------------------------------------')
-    print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
-    print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
-    print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
-    print("      Playthrough Mode:", mode, '\n')
-    print('      Options: [Q] Quit [P] Play Music [S] Stop Music [B] Back to Dialog Speed \n')
-    print('---------------------------------------------------------------------------------------------------')
+    dungeon()
+    print("           Playthrough Mode:", mode, '\n')
+    print('           Options: [Q] Quit [P] Play Music [S] Stop Music [B] Back to Dialog Speed \n')
+    line()
 def Main4():
     global mode
-    print('---------------------------------------------------------------------------------------------------')
-    print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
-    print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
-    print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
-    print("      Playthrough Mode:", mode, '\n')
-    print("      Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu [I] Inventory \n")
-    print('---------------------------------------------------------------------------------------------------')
+    if weaponWE == 'Sword':
+        attack = '1 - 5'
+    elif weaponWE == 'Sharp Sword':
+        attack = '5 - 10'
+    elif weaponWE == 'Golden Sword':
+        attack = '10 - 15'
+    global attack
+    if shieldWE == 'Wooden Shield':
+        block = block + 2
+    elif shieldWE == 'Iron Shield':
+        block = block + 5
+    global health
+    if armourWE == 'Leather Armour':
+        block = block + 2
+    elif armourWE == 'Chainmail Armour':
+    global gold
+    global name
+    global block
+    global weaponWE
+    dungeon()
+    print("           Playthrough Mode:", mode, '\n')
+    print("           Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu [I] Inventory \n")
+    print('           Stats:  Health: ',health,' Gold: ',gold,' Class: ',name)
+    print('           Combat Stats: Attack: ',attack,' Block: ',block,'\n')
+    line()
 def Main5():
     global mode
-    print('---------------------------------------------------------------------------------------------------')
-    print('      ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
-    print('      |  \ |  | |\ | | __ |___ |  | |\ |    [__  | |\/| |  | |    |__|  |  |  | |__/')
-    print('      |__/ |__| | \| |__] |___ |__| | \|    ___] | |  | |__| |___ |  |  |  |__| |  \ \n')
-    print("      Playthrough Mode:", mode, '\n')
-    print("      Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu\n")
-    print('---------------------------------------------------------------------------------------------------')
+    global health
+    global gold
+    global name
+    dungeon()
+    print("           Playthrough Mode:", mode, '\n')
+    print("           Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu\n")
+    print('           Stats: Health: ',health,' Gold: ',gold,' Class: ',name,'\n')
+    line()
+def Main6():
+    global mode
+    global health
+    global gold
+    global name
+    dungeon()
+    print("           Playthrough Mode:", mode, '\n')
+    print('           Options: Currently Disabled until next Choice.\n')
+    print('           Stats:  Health: ',health,' Gold: ',gold,' Class: ',name,'\n')
+    print('           Combat Stats: Attack: ',attack,' Block: ',block,'\n')
+    line()
 def inventoryW():
     global weaponW
     global shieldW
     global armourW
     while True:
         clear()
-        Main()
-        hp()
+        Main6()
         print('\nInventory')
         print('Weapons: ',weaponW)
         print('Shield: ',shieldW)
@@ -106,23 +148,31 @@ def ShopWeapon():
     print("'The Burning Fire' Shop ")
     print('[R] Ready to Continue [B] Back to Shop')
     print('Weapons: ')
-    print('[1] Sword          | Attack: 5   (5 Gold)')
-    print('[2] Sharp Sword    | Attack: 8   (8 Gold)')
-    print('[3] Longsword      | Attack: 10  (10 Gold)')
-    print('[4] Golden Sword   | Attack: 15  (15 Gold)')
-    print('[5] Wooden Shield  | Block: 2    (2 Gold)')
-    print('[6] Iron Shield    | Block: 5    (5 Gold)')
-def hp():
-    global health
-    global name
-    global gold
-    print('Health: ',health,' Gold: ',gold,' Class: ',name)
+    print('[1] Sword          | Attack: 1 - 5    (5 Gold)')
+    print('[2] Sharp Sword    | Attack: 5 - 10   (10 Gold)')
+    print('[3] Golden Sword   | Attack: 10 - 15  (15 Gold)')
+    print('[4] Wooden Shield  | Block: 2         (2 Gold)')
+    print('[5] Iron Shield    | Block: 5         (5 Gold)')
+def ShopArmour():
+    print("'The Burning Fire' Shop ")
+    print('[R] Ready to Continue [B] Back to Shop')
+    print('Armour: ')
+    print('[1] Leather Armour    | Block: 2    (2 Gold)')
+    print('[2] Chainmail Armour  | Block: 5    (5 Gold)')
+    print('[3] Iron Armour       | Block: 10   (5 Gold)')
+def ShopPotion():
+    print("'The Burning Fire' Shop ")
+    print('[R] Ready to Continue [B] Back to Shop')
+    print('Potions: ')
+    print('[1] Small Health Potion   | Health + 1   (1 Gold)')
+    print('[2] Health Potion         | Health + 5   (5 Gold)')
+    print('[2] Large Health Potion   | Health + 10  (10 Gold)')
 def hp2():
     global health
     global name
     global summon
     global gold
-    print('Health: ',health,' Gold: ',gold,' Class: ',name,' Elemental: ',summon)
+    print('Stats: Health: ',health,' Gold: ',gold,' Class: ',name,' Elemental: ',summon)
 def dialog():
     global Dialog
     if Dialog == 1:
@@ -136,37 +186,29 @@ def dialog():
 
 def loading():
     os.system("mode con: cols=41 lines=7")
-    print('----------------------------------------')
-    print('  _    ____ ____ ___  _ _  _ ____')
-    print('  |    |  | |__| |  \ | |\ | | __')
-    print('  |___ |__| |  | |__/ | | \| |__] \n')
-    print('----------------------------------------')
+    load1()
+    load2()
     time.sleep(1)
     clear()
     for x in (1,2):
-        print('----------------------------------------')
-        print('  _    ____ ____ ___  _ _  _ ____')
-        print('  |    |  | |__| |  \ | |\ | | __')
+        load1()
         print('  |___ |__| |  | |__/ | | \| |__] . \n')
-        print('----------------------------------------')
+        load2()
         time.sleep(1)
         clear()
-        print('----------------------------------------')
-        print('  _    ____ ____ ___  _ _  _ ____')
-        print('  |    |  | |__| |  \ | |\ | | __')
+        load1()
         print('  |___ |__| |  | |__/ | | \| |__] . . \n')
-        print('----------------------------------------')
+        load2()
         time.sleep(1)
         clear()
-        print('----------------------------------------')
-        print('  _    ____ ____ ___  _ _  _ ____')
-        print('  |    |  | |__| |  \ | |\ | | __')
+        load1()
         print('  |___ |__| |  | |__/ | | \| |__] . . .\n')
-        print('----------------------------------------')
+        load()
         time.sleep(1)
         clear()
 def classSelect():
     os.system("mode con: cols=100 lines=40")
+    global mode
     global player
     global Music
     global Check
@@ -232,6 +274,8 @@ def classSelect2():
     global archerR
     global earth
     global fire
+    global block
+    global attack
     name = ''
     summon=''
     weaponW='Sword'
@@ -240,6 +284,8 @@ def classSelect2():
     weaponWE='Sword'
     shieldWE=''
     armourWE='Leather Armour'
+    attack=''
+    block-0
     gold=0
     health=10
     warriorL=False
@@ -303,7 +349,6 @@ def level1_W():
     global warriorR
     clear()
     Main5()
-    hp()
     print('There are two tunnels.')
     action=input('[1] Left Tunnel [2] Right Tunnel \n')
     if action == 'Q' or action == 'q':
@@ -331,7 +376,6 @@ def level1_W():
                 while True:
                     clear()
                     Main()
-                    hp()
                     print('There are two tunnels.')
                     print('[1] Left Tunnel [2] Right Tunnel')
                     print('1')
@@ -348,7 +392,6 @@ def level1_W():
                 while True:
                     clear()
                     Main()
-                    hp()
                     print('There are two tunnels.')
                     print('[1] Left Tunnel [2] Right Tunnel')
                     print('2')
@@ -368,7 +411,6 @@ def level1_A():
     global archerR
     clear()
     Main5()
-    hp()
     print('There are two enemies.')
     print('Which one should we attack?')
     action=input('[1] Orge [2] Bat \n')
@@ -394,7 +436,6 @@ def level1_A():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
                 print('With my ranged bow I can continue hitting this Orge!')
                 dialog()
                 print("He can't catch up to me because of his speed.")
@@ -406,7 +447,6 @@ def level1_A():
                 while True:
                     clear()
                     Main()
-                    hp()
                     print('With my ranged bow I can continue hitting this Orge!')
                     print("He can't catch up to me because of his speed.")
                     print('The Orge has been defeated!')
@@ -420,7 +460,6 @@ def level1_A():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
                 print('Arghh, it is too fast. I need to get back.')
                 dialog()
                 print('The bat catches up too you, you take 3 damage.')
@@ -428,14 +467,12 @@ def level1_A():
                 health = health - 3
                 clear()
                 Main()
-                hp()
                 print('Arghh, it is too fast. I need to get back.')
                 print('The bat catches up too you, you take 3 damage.')
                 dialog()
                 while True:
                     clear()
                     Main()
-                    hp()
                     print('Arghh, it is too fast. I need to get back.')
                     print('The bat catches up too you, you take 3 damage.')
                     action=input('[Enter/Return] to Continue \n')
@@ -454,7 +491,6 @@ def level1_S():
     global summon
     clear()
     Main5()
-    hp()
     print('You are given the option to summon one elemental')
     action=input('[1] Earth Elemental [2] Fire Elemental \n')
     if action == 'Q' or action == 'q':
@@ -482,7 +518,7 @@ def level1_S():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You are given the option to summon one elemental')
                     print('[1] Earth Elemental [2] Fire Elemental')
                     print('1')
@@ -501,7 +537,7 @@ def level1_S():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You are given the option to summon one elemental')
                     print('[1] Earth Elemental [2] Fire Elemental')
                     print('2')
@@ -523,7 +559,7 @@ def level2_W():
     global warriorRR
     clear()
     Main()
-    hp()
+
     if warriorL == True:
         print('You have found a sharp sword, this is better than your current one.')
         dialog()
@@ -533,7 +569,7 @@ def level2_W():
         while True:
             clear()
             Main()
-            hp()
+
             print('You have found a sharp sword, this is better than your current one.')
             print('You take 1 damage from picking up the sword.')
             action=input('[Enter/Return] to Continue \n')
@@ -545,7 +581,7 @@ def level2_W():
     elif warriorR == True:
         clear()
         Main5()
-        hp()
+
         print('You have found a rusty sword, this is worse than your current one.')
         print('You pass it without picking it up.')
         print('You see 10 wild boars roaming the area')
@@ -573,7 +609,7 @@ def level2_W():
                 if path_c == 1:
                     clear()
                     Main()
-                    hp()
+
                     print('You successfully defeat the 10 wild boars.')
                     dialog()
                     print('However take 4 damage in the process.')
@@ -584,7 +620,7 @@ def level2_W():
                     dialog()
                     clear()
                     Main()
-                    hp()
+
                     print('You successfully defeat the 10 wild boars.')
                     print('However take 4 damage in the process.')
                     print('You recieve 10 gold.')
@@ -592,7 +628,7 @@ def level2_W():
                     while True:
                         clear()
                         Main()
-                        hp()
+
                         print('You successfully defeat the 10 wild boars.')
                         print('However take 4 damage in the process.')
                         print('You recieve 10 gold.')
@@ -606,7 +642,7 @@ def level2_W():
                 elif path_c == 2:
                     clear()
                     Main()
-                    hp()
+
                     print('Your attempt to sneak past was successful')
                     dialog()
                     print('The wild boars did not notice you.')
@@ -616,7 +652,7 @@ def level2_W():
                     while True:
                         clear()
                         Main()
-                        hp()
+
                         print('Your attempt to sneak past was successful')
                         print('The wild boars did not notice you.')
                         print('You pass this stage with full health.')
@@ -639,7 +675,7 @@ def level2_W2():
     global warriorLR
     clear()
     Main5()
-    hp()
+
     print('You see 5 armed goblins walking in you direction')
     print('What do you do?')
     action=input('[1] Fight [2] Hide \n')
@@ -665,7 +701,7 @@ def level2_W2():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
+
                 print('You successfully defeat the 5 goblins.')
                 dialog()
                 print('You did not get hit once, it must be because of the Sharp Sword.')
@@ -680,7 +716,7 @@ def level2_W2():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You successfully defeat the 5 goblins.')
                     print('You did not get hit once, it must be because of the Sharp Sword.')
                     print('One of the goblins was carrying some rope.')
@@ -696,7 +732,7 @@ def level2_W2():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
+
                 print('You attempt to hide however are spotted.')
                 dialog()
                 print('The goblins then surrounded you.')
@@ -706,7 +742,7 @@ def level2_W2():
                 health = health - 2
                 clear()
                 Main()
-                hp()
+
                 print('You attempt to hide however are spotted.')
                 print('The goblins then surrounded you.')
                 print('You eventually defeat them all, however take 2 damage in the process.')
@@ -716,7 +752,7 @@ def level2_W2():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You attempt to hide however are spotted.')
                     print('The goblins then surrounded you.')
                     print('You eventually defeat them all, however take 2 damage in the process.')
@@ -735,7 +771,7 @@ def level2_A():
     global health
     clear()
     Main5()
-    hp()
+
     if archerL == True:
         print('You have set off a trap!')
         print('The ground beneath you will give away any second now!')
@@ -763,7 +799,7 @@ def level2_A():
                 if path_c == 1:
                     clear()
                     Main()
-                    hp()
+
                     print('You managed to run away somewhat safely')
                     dialog()
                     print('However trip and fall taking 2 damage.')
@@ -771,14 +807,14 @@ def level2_A():
                     dialog()
                     clear()
                     Main()
-                    hp()
+
                     print('You managed to run away somewhat safely')
                     print('However trip and fall taking 2 damage.')
                     dialog()
                     while True:
                         clear()
                         Main()
-                        hp()
+
                         print('You managed to run away somewhat safely')
                         print('However trip and fall taking 2 damage.')
                         action=input('[Enter/Return] to Continue \n')
@@ -816,7 +852,7 @@ def level2_A():
         while True:
             clear()
             Main()
-            hp()
+
             print('You see a Cursed Bow')
             print('You pick it up, dealing 1 curse damage over time')
             print('The cursed effect seems to only last for 1 turn.')
@@ -847,7 +883,7 @@ def level2_A3():
     global health
     clear()
     Main5()
-    hp()
+
     print('In the distance you see 3 guards, they seem to be guarding something.')
     action=input('[1] Fight the Guards [2] Sneak Past \n')
     if action == 'Q' or action == 'q':
@@ -871,7 +907,7 @@ def level2_A3():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
+
                 print('You start engaging in combat.')
                 dialog()
                 print('However they have two archers and a warrior.')
@@ -883,7 +919,7 @@ def level2_A3():
                 dialog()
                 clear()
                 Main()
-                hp()
+
                 print('You start engaging in combat.')
                 print('However they have two archers and a warrior.')
                 print('As you defeat one archer the other continues firing at you.')
@@ -897,7 +933,7 @@ def level2_A3():
                 dialog()
                 clear()
                 Main()
-                hp()
+
                 print('You start engaging in combat.')
                 print('However they have two archers and a warrior.')
                 print('As you defeat one archer the other continues firing at you.')
@@ -914,7 +950,7 @@ def level2_A3():
                 dialog()
                 clear()
                 Main()
-                hp()
+
                 print('You start engaging in combat.')
                 print('However they have two archers and a warrior.')
                 print('As you defeat one archer the other continues firing at you.')
@@ -930,7 +966,7 @@ def level2_A3():
                 health = health - 1
                 clear()
                 Main()
-                hp()
+
                 print('You start engaging in combat.')
                 print('However they have two archers and a warrior.')
                 print('As you defeat one archer the other continues firing at you.')
@@ -945,7 +981,7 @@ def level2_A3():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You start engaging in combat.')
                     print('However they have two archers and a warrior.')
                     print('As you defeat one archer the other continues firing at you.')
@@ -967,14 +1003,14 @@ def level2_A3():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
+
                 print('Your attempt to sneak past was successful!')
                 dialog()
                 print('The guards did not notice you.')
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('Your attempt to sneak past was successful!')
                     print('The guards did not notice you.')
                     action=input('[Enter/Return] to Continue \n')
@@ -1203,7 +1239,7 @@ def level3_WL1():
     global warriorLRR
     clear()
     Main5()
-    hp()
+
     if warriorLL == True:
         print('You see a ledge up ahead.')
         print('You slowly approach it and lean over the edge.')
@@ -1232,7 +1268,7 @@ def level3_WL1():
                 if path_c == 1:
                     clear()
                     Main()
-                    hp()
+
                     print('You proceed to use the rope to climb down the ledge.')
                     dialog()
                     print('On the way down you notice that the area below you is getting brighter.')
@@ -1243,7 +1279,7 @@ def level3_WL1():
                     while True:
                         clear()
                         Main()
-                        hp()
+
                         print('You proceed to use the rope to climb down the ledge.')
                         print('On the way down you notice that the area below you is getting brighter.')
                         print('You then touch down on the ground, and around you are bright torches.')
@@ -1256,7 +1292,7 @@ def level3_WL1():
                 elif path_c == 2:
                     clear()
                     Main()
-                    hp()
+
                     print('As you begin look around for another passageway..')
                     dialog()
                     print('You suddenly spot a Legendary Eagle Master.')
@@ -1272,7 +1308,7 @@ def level3_WL1():
                     health = health - 6
                     clear()
                     Main()
-                    hp()
+
                     print('As you begin look around for another passageway..')
                     print('You suddenly spot a Legendary Eagle Master.')
                     print('He notices you insantly and begins to ready himself for battle.')
@@ -1292,7 +1328,7 @@ def level3_WL1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('As you begin look around for another passageway..')
                     print('You suddenly spot a Legendary Eagle Master.')
                     print('He notices you insantly and begins to ready himself for battle.')
@@ -1309,7 +1345,7 @@ def level3_WL1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('As you begin look around for another passageway..')
                     print('You suddenly spot a Legendary Eagle Master.')
                     print('He notices you insantly and begins to ready himself for battle.')
@@ -1327,7 +1363,7 @@ def level3_WL1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('As you begin look around for another passageway..')
                     print('You suddenly spot a Legendary Eagle Master.')
                     print('He notices you insantly and begins to ready himself for battle.')
@@ -1370,7 +1406,7 @@ def level3_WL2():
     global warriorLRR
     clear()
     Main5()
-    hp()
+
     print('At your left you spot a Treasure Chest.')
     print('However around it are many spike traps.')
     print('But on the right you see a Skeleton Warrior.')
@@ -1400,7 +1436,7 @@ def level3_WL2():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
+
                 print('You turn left heading towards the Treasure Chest.')
                 dialog()
                 print('As you get closer you notice that the lighting had gotten darker.')
@@ -1412,7 +1448,7 @@ def level3_WL2():
                 health = 0
                 clear()
                 Main()
-                hp()
+
                 print('You turn left heading towards the Treasure Chest.')
                 print('As you get closer you notice that the lighting had gotten darker.')
                 print('Then without realising you trigger a trip wire.')
@@ -1429,7 +1465,7 @@ def level3_WL2():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
+
                 print('You turn right heading towards the Skeleton Warrior.')
                 dialog()
                 print('As you get closer the Skeleton Warrior notices you.')
@@ -1447,7 +1483,7 @@ def level3_WL2():
                 health = health - 3
                 clear()
                 Main()
-                hp()
+
                 print('You turn right heading towards the Skeleton Warrior.')
                 print('As you get closer the Skeleton Warrior notices you.')
                 print('You both ready yourselves for battle.')
@@ -1469,7 +1505,7 @@ def level3_WL2():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You turn right heading towards the Skeleton Warrior.')
                     print('As you get closer the Skeleton Warrior notices you.')
                     print('You both ready yourselves for battle.')
@@ -1494,7 +1530,7 @@ def level3_WL2():
 def level3_WLL():
     clear()
     Main()
-    hp()
+
     print('As you begin look around for another passageway..')
     print('You suddenly spot a Legendary Eagle Master.')
     print('He notices you insantly and begins to ready himself for battle.')
@@ -1519,7 +1555,7 @@ def level3_WLL():
 def level3_WLR():
     clear()
     Main()
-    hp()
+
     print('You turn left heading towards the Treasure Chest.')
     print('As you get closer you notice that the lighting had gotten darker.')
     print('Then without realising you trigger a trip wire.')
@@ -1538,7 +1574,7 @@ def level3_WR1():
     global warriorRRR
     clear()
     Main5()
-    hp()
+
     if warriorRL == True:
         print('You see a door ahead...')
         print('However there seems to be 10 guards in front of it.')
@@ -1566,7 +1602,7 @@ def level3_WR1():
                 if path_c == 1:
                     clear()
                     Main()
-                    hp()
+
                     print('With the sword in your hand, you start attacking.')
                     dialog()
                     print('You take down 3, this is looking good.')
@@ -1584,7 +1620,7 @@ def level3_WR1():
                     dialog()
                     clear()
                     Main()
-                    hp()
+
                     print('With the sword in your hand, you start attacking.')
                     print('You take down 3, this is looking good.')
                     print('However from the door appears a Legendary Eagle Master.')
@@ -1604,7 +1640,7 @@ def level3_WR1():
                 elif path_c == 2:
                     clear()
                     Main()
-                    hp()
+
                     print('You plan out your route.')
                     dialog()
                     print("You see 4 Archers and 6 Warriors.")
@@ -1622,7 +1658,7 @@ def level3_WR1():
                     health = health - 4
                     clear()
                     Main()
-                    hp()
+
                     print('You plan out your route.')
                     print("You see 4 Archers and 6 Warriors.")
                     print('You follow the right wall, however half-way through..')
@@ -1633,7 +1669,7 @@ def level3_WR1():
                     while True:
                         clear()
                         Main()
-                        hp()
+
                         print('You plan out your route.')
                         print("You see 4 Archers and 6 Warriors.")
                         print('You follow the right wall, however half-way through..')
@@ -1653,7 +1689,7 @@ def level3_WR1():
     elif warriorRR == True:
         clear()
         Main5()
-        hp()
+
         print('Up ahead you see an old witch.')
         print('She seems to be making Health Potions.')
         print('Behind her are a stack off 3 Health Potions.')
@@ -1682,7 +1718,7 @@ def level3_WR1():
                 if path_c == 1:
                     clear()
                     Main()
-                    hp()
+
                     print('You ready yourself for battle.')
                     dialog()
                     print('The old witch notices you and she quickly retreats back into her home.')
@@ -1696,7 +1732,7 @@ def level3_WR1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('You ready yourself for battle.')
                     print('The old witch notices you and she quickly retreats back into her home.')
                     print('You follow her, however...')
@@ -1710,7 +1746,7 @@ def level3_WR1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('You ready yourself for battle.')
                     print('The old witch notices you and she quickly retreats back into her home.')
                     print('You follow her, however...')
@@ -1723,7 +1759,7 @@ def level3_WR1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('You ready yourself for battle.')
                     print('The old witch notices you and she quickly retreats back into her home.')
                     print('You follow her, however...')
@@ -1735,7 +1771,7 @@ def level3_WR1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('You ready yourself for battle.')
                     print('The old witch notices you and she quickly retreats back into her home.')
                     print('You follow her, however...')
@@ -1748,7 +1784,7 @@ def level3_WR1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('You ready yourself for battle.')
                     print('The old witch notices you and she quickly retreats back into her home.')
                     print('You follow her, however...')
@@ -1761,7 +1797,7 @@ def level3_WR1():
                     health = health - 1
                     clear()
                     Main()
-                    hp()
+
                     print('You ready yourself for battle.')
                     print('The old witch notices you and she quickly retreats back into her home.')
                     print('You follow her, however...')
@@ -1773,7 +1809,7 @@ def level3_WR1():
                     dialog()
                     clear()
                     Main()
-                    hp()
+
                     print("You wake up to find that you've been stripped of all your belongings.")
                     dialog()
                     print("She has also taken your Sword.")
@@ -1788,7 +1824,7 @@ def level3_WR1():
                     health = 0
                     clear()
                     Main()
-                    hp()
+
                     print("You wake up to find that you've been stripped of all your belongings.")
                     print("She has also taken your Sharp Sword.")
                     print("You walk back the way you came until you see the Witch's home again.")
@@ -1808,7 +1844,7 @@ def level3_WR1():
                 elif path_c == 2:
                     clear()
                     Main()
-                    hp()
+
                     print('You approach the old witch.')
                     dialog()
                     print('You offer your Sword and in return she gives you a health potion.')
@@ -1816,7 +1852,7 @@ def level3_WR1():
                     health = health + 1
                     clear()
                     Main()
-                    hp()
+
                     print('You approach the old witch.')
                     print('You offer your Sword and in return she gives you a health potion.')
                     dialog()
@@ -1831,7 +1867,7 @@ def level3_WR1():
                     dialog()
                     clear()
                     Main()
-                    hp()
+
                     print('You approach the old witch.')
                     print('You offer your Sword and in return she gives you a health potion.')
                     print('She then beckons you to come to her home.')
@@ -1841,7 +1877,7 @@ def level3_WR1():
                     while True:
                         clear()
                         Main()
-                        hp()
+
                         print('You approach the old witch.')
                         print('You offer your Sword and in return she gives you a health potion.')
                         print('She then beckons you to come to her home.')
@@ -1862,7 +1898,7 @@ def level3_WR1():
 def level3_WRL():
     clear()
     Main()
-    hp()
+
     print('With the sharp sword in your hand, you start attacking.')
     print('You take down 3, this is looking good.')
     print('However from the door appears a Legendary Eagle Master.')
@@ -1881,7 +1917,7 @@ def level3_WRL():
 def level3_WRR():
     clear()
     Main()
-    hp()
+
     print("You wake up to find that you've been stripped off all your belongings.")
     print("She has also taken your Sharp Sword.")
     print("You walk back the way you came until you see the Witch's home again.")
@@ -1901,7 +1937,7 @@ def level4_W():
     global gold
     clear()
     Main5()
-    hp()
+
     print('You see a ledge up ahead.')
     print('You slowly approach it and lean over the edge.')
     print("It's pitch black...")
@@ -1929,7 +1965,7 @@ def level4_W():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
+
                 print('As you begin climbing down you notice how dark it really is.')
                 dialog()
                 print('After a while it starts getting harder to find footings in the rocks.')
@@ -1949,7 +1985,7 @@ def level4_W():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
+
                 print('As you begin look around for another passageway..')
                 dialog()
                 print('You suddenly spot someone to your right wearing heavy armour.')
@@ -1988,7 +2024,7 @@ def level4_W():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('As you begin look around for another passageway..')
                     print('You suddenly spot someone to your right wearing heavy armour.')
                     print('He notices you insantly and begins to ready himself for battle.')
@@ -2018,7 +2054,7 @@ def level4_W():
 def level4_WLLL():
     clear()
     Main()
-    hp()
+
     print('You start walking towards the Left Hallway.')
     print('The walk slowly turns into a job.')
     print('You now sprinting towards the Opening.')
@@ -2038,7 +2074,7 @@ def level4_WLLL():
 def level4_WLRR():
     clear()
     Main()
-    hp()
+
     print('As you begin climbing down you notice how dark it really is.')
     print('After a while it starts getting harder to find footings in the rocks.')
     print('Suddenly you lose grip on the rock and start falling.')
@@ -2056,7 +2092,7 @@ def level4_WRLR():
     global health
     clear()
     Main()
-    hp()
+
     print('After narrowly escaping death, you continue moving forward.')
     dialog()
     print("At the same time pulling out the arrows that made it's mark")
@@ -2092,7 +2128,7 @@ def level4_WRLR2():
     global gold
     clear()
     Main5()
-    hp()
+
     print('After narrowly escaping death, you continue moving forward.')
     print("At the same time pulling out the arrows that made it's mark")
     print('Ultimately collapsing from blood loss.')
@@ -2134,7 +2170,7 @@ def level4_WRLR2():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
+
                 print('You quickly draw your sword and swing towards the crowd.')
                 dialog()
                 print('Causing a massive outcry from the Dragonrace, 3 bodies slump to the ground.')
@@ -2176,7 +2212,7 @@ def level4_WRLR2():
                 health = health - 2
                 clear()
                 Main()
-                hp()
+
                 print('You quickly draw your sword and swing towards the crowd.')
                 print('Causing a massive outcry from the Dragonrace, 3 bodies slump to the ground.')
                 print('The rest back off preparing for battle.')
@@ -2210,7 +2246,7 @@ def level4_WRLR2():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You quickly draw your sword and swing towards the crowd.')
                     print('Causing a massive outcry from the Dragonrace, 3 bodies slump to the ground.')
                     print('The rest back off preparing for battle.')
@@ -2243,7 +2279,7 @@ def level4_WRLR2():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
+
                 print('You slowly pick yourself up, turn and thank each individual.')
                 dialog()
                 print('After a full circle you had counted 8 Dragonrace.')
@@ -2281,7 +2317,7 @@ def level4_WRLR2():
 def level4_WRLR3():
     clear()
     Main()
-    hp()
+
     print('You slowly pick yourself up, turn and thank each individual.')
     print('After a full circle you had counted 8 Dragonrace.')
     print('With thanks you quickly turn and leave.')
@@ -2309,7 +2345,7 @@ def level4_WRRR():
     global weaponWE
     clear()
     Main5()
-    hp()
+
     if warriorRRR==True:
         print('Feeling energized you continue on your journey.')
         print('You then spot a Golden Sword that appears to be stuck within this stone.')
@@ -2337,7 +2373,7 @@ def level4_WRRR():
                 if path_c == 1:
                     clear()
                     Main()
-                    hp()
+
                     print('You slowly approach the sword, putting one foot in front of the other.')
                     dialog()
                     print('You put both hands on the handle of the sword and proceed to pull.')
@@ -2349,7 +2385,7 @@ def level4_WRRR():
                     health = 0
                     clear()
                     Main()
-                    hp()
+
                     print('You slowly approach the sword, putting one foot in front of the other.')
                     print('You put both hands on the handle of the sword and proceed to pull.')
                     print("It doesn't budge, suddenly a flash of lightning strikes down.")
@@ -2365,7 +2401,7 @@ def level4_WRRR():
                 elif path_c == 2:
                     clear()
                     Main()
-                    hp()
+
                     print('You deem that you are not worthy enough for the Golden Sword and continue on.')
                     dialog()
                     print('As you continue walking along the path, the ceiling widens.')
@@ -2397,7 +2433,7 @@ def level4_WRRR():
                     dialog()
                     clear()
                     Main()
-                    hp()
+
                     print('You deem that you are not worthy enough for the Golden Sword and continue on.')
                     print('As you continue walking along the path, the ceiling widens.')
                     print('You look around to find yourself in a giant courtyard. However at the centre.')
@@ -2419,7 +2455,7 @@ def level4_WRRR():
                     while True:
                         clear()
                         Main()
-                        hp()
+
                         print('You deem that you are not worthy enough for the Golden Sword and continue on.')
                         print('As you continue walking along the path, the ceiling widens.')
                         print('You look around to find yourself in a giant courtyard. However at the centre.')
@@ -2445,7 +2481,7 @@ def level4_WRRR():
 def level4_WRRR2():
     clear()
     Main()
-    hp()
+
     print('You slowly approach the sword, putting one foot in front of the other.')
     print('You put both hands on the handle of the sword and proceed to pull.')
     print("It doesn't budge, suddenly a flash of lightning strikes down.")
@@ -2463,7 +2499,7 @@ def level5_W():
     global gold
     clear()
     Main5()
-    hp()
+
     print('The Left Hallway has many torches and seems to lead to some sort of Opening?')
     print('Yes a Dungeon Opening, from here I can faintly hear the sound of the wind.')
     print('However the Right Hallway is giving the opposite effect.')
@@ -2492,7 +2528,7 @@ def level5_W():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
+
                 print('You start walking towards the Left Hallway.')
                 dialog()
                 print('The walk slowly turns into a job.')
@@ -2505,7 +2541,7 @@ def level5_W():
                 health = 0
                 clear()
                 Main()
-                hp()
+
                 print('You start walking towards the Left Hallway.')
                 print('The walk slowly turns into a job.')
                 print('You now sprinting towards the Opening.')
@@ -2522,7 +2558,7 @@ def level5_W():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
+
                 print('With one hand on the right wall you begin to advance forward.')
                 dialog()
                 print('*Clack*, you feet bump into some bones laying on the ground.')
@@ -2553,7 +2589,7 @@ def level5_W():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('With one hand on the right wall you begin to advance forward.')
                     print('*Clack*, you feet bump into some bones laying on the ground.')
                     print('A cold shiver runs down your spine as you continue onwards.')
@@ -2580,7 +2616,7 @@ def level5_W2():
     global gold
     clear()
     Main5()
-    hp()
+
     print('You seem to be surrounded by Magical Puddings.')
     print('They seem to be chanting something, perhaps a group spell?')
     print('You need to get out of the magic circle now visible on the ground.')
@@ -2608,7 +2644,7 @@ def level5_W2():
             if path_c == 1:
                 clear()
                 Main()
-                hp()
+
                 print('You draw your Golden Sword holding it tightly, you await for the chant to end.')
                 dialog()
                 print('Suddenly then chant ends and a birght light is surrounding the magic circle.')
@@ -2620,7 +2656,7 @@ def level5_W2():
                 while True:
                     clear()
                     Main()
-                    hp()
+
                     print('You draw your sword holding it tightly, you await for the chant to end.')
                     print('Suddenly then chant ends and a birght light is surrounding the magic circle.')
                     print('In an instant your scenary changes you now appear to be in a hole?')
@@ -2633,7 +2669,7 @@ def level5_W2():
             elif path_c == 2:
                 clear()
                 Main()
-                hp()
+
                 print('You draw your Golden Sword perparing to charge the new enemies.')
                 dialog()
                 print('As you down one the rest stop chanting, the magic circle disappears.')
@@ -2660,7 +2696,7 @@ def level5_W2():
 def level5_W3():
     clear()
     Main()
-    hp()
+
     print('You draw your Golden Sword perparing to charge the new enemies.')
     print('As you down one the rest stop chanting, the magic circle disappears.')
     print('The rest swiftly cast a new spell aimed at you, you quickly dodge into cover.')
@@ -2678,7 +2714,7 @@ def level5_W3():
 def levelShop():
     clear()
     Main4()
-    hp()
+
     print("'The Burning Fire' Shop ")
     action=input('[1] Weapons [2] Armour [3] Potions [4] Spell Books\n')
     if action == 'Q' or action == 'q':
@@ -2695,6 +2731,8 @@ def levelShop():
         inventoryW()
     elif action == '1':
         levelShop_W()
+    elif action == '2':
+        levelShop_A()
 def levelShop_W():
     global weaponWE
     global shieldWE
@@ -2703,16 +2741,15 @@ def levelShop_W():
     global gold
     clear()
     Main4()
-    hp()
+
     print("'The Burning Fire' Shop ")
     print('[R] Ready to Continue [B] Back to Shop')
     print('Weapons: ')
-    print('[1] Sword          | Attack: 5   (5 Gold)')
-    print('[2] Sharp Sword    | Attack: 8   (8 Gold)')
-    print('[3] Longsword      | Attack: 10  (10 Gold)')
-    print('[4] Golden Sword   | Attack: 15  (15 Gold)')
-    print('[5] Wooden Shield  | Block: 2    (2 Gold)')
-    print('[6] Iron Shield    | Block: 5    (5 Gold)')
+    print('[1] Sword          | Attack: 1 - 5    (5 Gold)')
+    print('[2] Sharp Sword    | Attack: 5 - 10   (10 Gold)')
+    print('[3] Golden Sword   | Attack: 10 - 15  (15 Gold)')
+    print('[4] Wooden Shield  | Block: 2         (2 Gold)')
+    print('[5] Iron Shield    | Block: 5         (5 Gold)')
     action=input('Selection: ')
     if action == 'Q' or action == 'q':
         quit()
@@ -2736,7 +2773,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -2761,7 +2798,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You already own this.')
@@ -2789,7 +2826,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Sword.')
@@ -2815,7 +2852,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -2841,7 +2878,7 @@ def levelShop_W():
                 while True:
                     clear()
                     Main4()
-                    hp()
+
                     ShopWeapon()
                     print('Selection: ',action)
                     print('Your weapon is far greater than this.')
@@ -2866,7 +2903,7 @@ def levelShop_W():
                 while True:
                     clear()
                     Main4()
-                    hp()
+
                     ShopWeapon()
                     print('Selection: ',action)
                     print('You already own this.')
@@ -2894,7 +2931,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Sharp Sword.')
@@ -2916,116 +2953,11 @@ def levelShop_W():
                 else:
                     continue
     elif action == '3':
-        if gold < 10:
-            while True:
-                clear()
-                Main4()
-                hp()
-                ShopWeapon()
-                print('Selection: ',action)
-                print('Insufficient Gold.')
-                action=input('[Enter/Return] to Continue [I] Inventory\n')
-                if action == "":
-                    levelShop_W()
-                elif action == 'I' or action == 'i':
-                    inventoryW()
-                elif action == 'Q' or action == 'q':
-                    quit()
-                elif action == 'P' or action == 'p':
-                    songP()
-                    levelShop_W()
-                elif action == 'S' or action == 's':
-                    songS()
-                    levelShop_W()
-                elif action == 'M' or action == 'm':
-                    classSelect2()
-                else:
-                    continue
-        elif weaponWE == 'Longsword' or 'Longsword' in weaponW:
-            if weaponWE == 'Golden Sword':
-                while True:
-                    clear()
-                    Main4()
-                    hp()
-                    ShopWeapon()
-                    print('Selection: ',action)
-                    print('Your weapon is far greater than this.')
-                    action=input('[Enter/Return] to Continue [I] Inventory\n')
-                    if action == "":
-                        levelShop_W()
-                    elif action == 'I' or action == 'i':
-                        inventoryW()
-                    elif action == 'Q' or action == 'q':
-                        quit()
-                    elif action == 'P' or action == 'p':
-                        songP()
-                        levelShop_W()
-                    elif action == 'S' or action == 's':
-                        songS()
-                        levelShop_W()
-                    elif action == 'M' or action == 'm':
-                        classSelect2()
-                    else:
-                        continue
-            else:
-                while True:
-                    clear()
-                    Main4()
-                    hp()
-                    ShopWeapon()
-                    print('Selection: ',action)
-                    print('You already own this.')
-                    action=input('[Enter/Return] to Continue [I] Inventory\n')
-                    if action == "":
-                        levelShop_W()
-                    elif action == 'I' or action == 'i':
-                        inventoryW()
-                    elif action == 'Q' or action == 'q':
-                        quit()
-                    elif action == 'P' or action == 'p':
-                        songP()
-                        levelShop_W()
-                    elif action == 'S' or action == 's':
-                        songS()
-                        levelShop_W()
-                    elif action == 'M' or action == 'm':
-                        classSelect2()
-                    else:
-                        continue
-        elif gold == 10 or gold > 10:
-            gold = gold - 10
-            weaponWE = 'Longsword'
-            weaponW += ' Longsword'
-            while True:
-                clear()
-                Main4()
-                hp()
-                ShopWeapon()
-                print('Selection: ',action)
-                print('You have acquired a Longsword.')
-                action=input('[Enter/Return] to Continue [I] Inventory\n')
-                if action == "":
-                    levelShop_W()
-                elif action == 'I' or action == 'i':
-                    inventoryW()
-                elif action == 'Q' or action == 'q':
-                    quit()
-                elif action == 'P' or action == 'p':
-                    songP()
-                    levelShop_W()
-                elif action == 'S' or action == 's':
-                    songS()
-                    levelShop_W()
-                elif action == 'M' or action == 'm':
-                    classSelect2()
-                else:
-                    continue
-    elif action == '4':
         if gold < 15:
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -3050,7 +2982,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You already own this.')
@@ -3078,7 +3010,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Golden Sword.')
@@ -3099,12 +3031,12 @@ def levelShop_W():
                     classSelect2()
                 else:
                     continue
-    elif action == '5':
+    elif action == '4':
         if gold < 2:
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -3130,7 +3062,7 @@ def levelShop_W():
                 while True:
                     clear()
                     Main4()
-                    hp()
+
                     ShopWeapon()
                     print('Selection: ',action)
                     print('Your shield is far greater than this.')
@@ -3155,7 +3087,7 @@ def levelShop_W():
                 while True:
                     clear()
                     Main4()
-                    hp()
+
                     ShopWeapon()
                     print('Selection: ',action)
                     print('You already own this.')
@@ -3183,7 +3115,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Wooden Shield.')
@@ -3204,12 +3136,12 @@ def levelShop_W():
                     classSelect2()
                 else:
                     continue
-    elif action == '6':
+    elif action == '5':
         if gold < 5:
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapn()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -3234,7 +3166,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You already own this.')
@@ -3262,7 +3194,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-                hp()
+
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Iron Shield.')
@@ -3285,5 +3217,332 @@ def levelShop_W():
                     continue
     else:
         levelShop_W()
+
+def levelShop_A():
+    global armourWE
+    global armourW
+    global gold
+    global block
+    clear()
+    Main4()
+
+    print("'The Burning Fire' Shop ")
+    print('[R] Ready to Continue [B] Back to Shop')
+    print('Armour: ')
+    print('[1] Leather Armour    | Block: 2    (2 Gold)')
+    print('[2] Chainmail Armour  | Block: 5    (5 Gold)')
+    print('[3] Iron Armour       | Block: 10   (5 Gold)')
+    action=input('Selection: ')
+    if action == 'Q' or action == 'q':
+        quit()
+    elif action == 'P' or action == 'p':
+        songP()
+        levelShop_A()
+    elif action == 'S' or action == 's':
+        songS()
+        levelShop_A()
+    elif action == 'M' or action == 'm':
+        classSelect2()
+    elif action == 'R' or action == 'r':
+        print('End of path.')
+        time.sleep(5)
+    elif action == 'B' or action == 'b':
+        levelShop()
+    elif action == 'I' or action == 'i':
+        inventoryW()
+    elif action == '1':
+        if gold < 2:
+            while True:
+                clear()
+                Main4()
+
+                ShopArmour()
+                print('Selection: ',action)
+                print('Insufficient Gold.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_A()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                    levelShop_A()
+                elif action == 'S' or action == 's':
+                    songS()
+                    levelShop_A()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+        elif shieldWE == 'Leather Armour' or 'Leather Armour' in shieldW:
+            if armourWE == 'Iron Armour' or armourWE == 'Chainmail Armour':
+                while True:
+                    clear()
+                    Main4()
+
+                    ShopArmour()
+                    print('Selection: ',action)
+                    print('Your armour is far greater than this.')
+                    action=input('[Enter/Return] to Continue [I] Inventory\n')
+                    if action == "":
+                        levelShop_A()
+                    elif action == 'I' or action == 'i':
+                        inventoryW()
+                    elif action == 'Q' or action == 'q':
+                        quit()
+                    elif action == 'P' or action == 'p':
+                        songP()
+                        levelShop_A()
+                    elif action == 'S' or action == 's':
+                        songS()
+                        levelShop_A()
+                    elif action == 'M' or action == 'm':
+                        classSelect2()
+                    else:
+                        continue
+            else:
+                while True:
+                    clear()
+                    Main4()
+
+                    ShopArmour()
+                    print('Selection: ',action)
+                    print('You already own this.')
+                    action=input('[Enter/Return] to Continue [I] Inventory\n')
+                    if action == "":
+                        levelShop_A()
+                    elif action == 'I' or action == 'i':
+                        inventoryW()
+                    elif action == 'Q' or action == 'q':
+                        quit()
+                    elif action == 'P' or action == 'p':
+                        songP()
+                        levelShop_A()
+                    elif action == 'S' or action == 's':
+                        songS()
+                        levelShop_A()
+                    elif action == 'M' or action == 'm':
+                        classSelect2()
+                    else:
+                        continue
+        elif gold == 2 or gold > 2:
+            gold = gold - 2
+            block=2
+            armourWE = 'Leather Armour'
+            armourW += ' Leather Armour'
+            while True:
+                clear()
+                Main4()
+
+                ShopArmour()
+                print('Selection: ',action)
+                print('You have acquired Leather Armour.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                    levelShop_A()
+                elif action == 'S' or action == 's':
+                    songS()
+                    levelShop_A()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+    elif action == '2':   #Chainmail Armour
+        if gold < 5:
+            while True:
+                clear()
+                Main4()
+
+                ShopArmour()
+                print('Selection: ',action)
+                print('Insufficient Gold.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_A()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                    levelShop_A()
+                elif action == 'S' or action == 's':
+                    songS()
+                    levelShop_A()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+        elif armourWE == 'Chainmail Armour' or 'Chainmail Armour' in armourW:
+            if armourWE == 'Iron Armour':
+                while True:
+                    clear()
+                    Main4()
+
+                    ShopArmour()
+                    print('Selection: ',action)
+                    print('Your armour is far greater than this.')
+                    action=input('[Enter/Return] to Continue [I] Inventory\n')
+                    if action == "":
+                        levelShop_A()
+                    elif action == 'I' or action == 'i':
+                        inventoryW()
+                    elif action == 'Q' or action == 'q':
+                        quit()
+                    elif action == 'P' or action == 'p':
+                        songP()
+                        levelShop_A()
+                    elif action == 'S' or action == 's':
+                        songS()
+                        levelShop_A()
+                    elif action == 'M' or action == 'm':
+                        classSelect2()
+                    else:
+                        continue
+            else:
+                while True:
+                    clear()
+                    Main4()
+
+                    ShopArmour()
+                    print('Selection: ',action)
+                    print('You already own this.')
+                    action=input('[Enter/Return] to Continue [I] Inventory\n')
+                    if action == "":
+                        levelShop_A()
+                    elif action == 'I' or action == 'i':
+                        inventoryW()
+                    elif action == 'Q' or action == 'q':
+                        quit()
+                    elif action == 'P' or action == 'p':
+                        songP()
+                        levelShop_A()
+                    elif action == 'S' or action == 's':
+                        songS()
+                        levelShop_A()
+                    elif action == 'M' or action == 'm':
+                        classSelect2()
+                    else:
+                        continue
+        elif gold == 5 or gold > 5:
+            gold = gold - 5
+            armourWE = 'Chainmail Armour'
+            armourW += ' Chainmail Armour'
+            block=5
+            while True:
+                clear()
+                Main4()
+
+                ShopArmour()
+                print('Selection: ',action)
+                print('You have acquired Chainmail Armour.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_A()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                    levelShop_A()
+                elif action == 'S' or action == 's':
+                    songS()
+                    levelShop_A()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+    elif action == '3':
+        if gold < 10:
+            while True:
+                clear()
+                Main4()
+
+                ShopArmour()
+                print('Selection: ',action)
+                print('Insufficient Gold.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_A()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                    levelShop_A()
+                elif action == 'S' or action == 's':
+                    songS()
+                    levelShop_A()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+        elif armourWE == 'Iron Armour' or 'Iron Armour' in armourW:
+            while True:
+                clear()
+                Main4()
+
+                ShopArmour()
+                print('Selection: ',action)
+                print('You already own this.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_A()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                    levelShop_A()
+                elif action == 'S' or action == 's':
+                    songS()
+                    levelShop_A()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+        elif gold == 10 or gold > 10:
+            gold = gold - 10
+            armourWE = 'Iron Armour'
+            armourW += ' Iron Armour'
+            block=10
+            while True:
+                clear()
+                Main4()
+
+                ShopArmour()
+                print('Selection: ',action)
+                print('You have acquired Iron Armour.')
+                action=input('[Enter/Return] to Continue [I] Inventory\n')
+                if action == "":
+                    levelShop_A()
+                elif action == 'I' or action == 'i':
+                    inventoryW()
+                elif action == 'Q' or action == 'q':
+                    quit()
+                elif action == 'P' or action == 'p':
+                    songP()
+                    levelShop_A()
+                elif action == 'S' or action == 's':
+                    songS()
+                    levelShop_A()
+                elif action == 'M' or action == 'm':
+                    classSelect2()
+                else:
+                    continue
+    else:
+        levelShop_A()
 
 classSelect()
