@@ -17,7 +17,7 @@
 # Work In Progress
 * Boss Fight
 * Colors?
-* Warrior Arc (89% Completed) ~
+* Warrior Arc (92% Completed) ~
 * Archer Arc (37% Completed) ~
 * Summoner Arc (37% Completed) ~
 
