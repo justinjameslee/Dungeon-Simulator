@@ -1,4 +1,4 @@
-# Dungeon-Simulator
+# Dungeon Simulator
 * Python Text-Based Game
 
 # Features
