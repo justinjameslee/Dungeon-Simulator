@@ -18,11 +18,11 @@
 * Story Rich (Some english grammatical and spelling errors)
 
 # Work In Progress
-* Boss Fight (0% Completed) 
+* Boss Fight (47% Completed) 
 * Colors?
 * How to Play?
 * Combat System (14% Completed) ~
-* Warrior Arc (92% Completed) ~
+* Warrior Arc (96% Completed)
 * Archer Arc (37% Completed) ~
 * Summoner Arc (37% Completed) ~
 
