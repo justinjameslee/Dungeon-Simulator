@@ -19,8 +19,13 @@ shieldW=''
 armourW='Leather Armour'
 Title="Dungeon Simulator"
 attack=''
+golden = randint(10,15)
+sharp = randint(5,10)
+sword = randint(1,5)
+dmg=0
 block=0
 gold=0
+bosshp=50
 fireball=0
 lightning=0
 blizzard=0
@@ -48,6 +53,50 @@ music = pyglet.media.load('Epic.mp3')
 os.system("title "+Title)
 #def sword():
     #print("           |>---=[0]-]======================>    <=============================[-[0]=---<| \n")
+def dragonfire():
+    print('Boss: Dragon | Boss Health: ',bosshp,'\n')
+    print("[1] Attack [2] Block [3] Fireball: ",fireball,' [4] Lightning Bolt: ',lightning,' [5] Blizzard: ',blizzard,'\n')
+    print("                                                    /===-_---~~~~~~~~~------__")
+    print("                    -==\\                         `//~\\   ~~~~`---.___.-~~'")
+    print("                ______-==|                         | |  \\           _-~`'")
+    print("          __--~~~  ,-/-==\\                        | |   `\        ,'")
+    print("       _-~       /'    |  \\                      / /      \      /")
+    print("     .'        /       |   \\                   /' /        \   /'")
+    print("    /  ____  /         |    \`\.__/-~~ ~ \ _ _/'  /          \/'")
+    print("   /-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~`")
+    print("                     \_|      /        _)   ;  ),   __--~~")
+    print("                       '~~--_/      _-~/-  / \   '-~ \ ")
+    print("                      {\__--_/}    / \\_>- )<__\      \ ")
+    print("                      /'   (_/  _-~  | |__>--<__|      |")
+    print("                     |0  0 _/) )-~     | |__>--<__|    |")
+    print("                     / /~ ,_/       / /__>---<__/      |")
+    print("                    o o _//        /-~_>---<__-~      /")
+    print("                    (^(~          /~_>---<__-      _-~")
+    print("                   ,/|           /__>--<__/     _-~ ")
+    print("                ,//('(          |__>--<__|     /    ")
+    print("               ( ( '))          |__>--<__|    |     ")
+def dragon():
+    print('Boss: Dragon | Boss Health: ',bosshp,'\n')
+    print("[1] Attack [2] Block [3] Fireball: ",fireball,' [4] Lightning Bolt: ',lightning,' [5] Blizzard: ',blizzard,'\n')
+    print("                                                    /===-_---~~~~~~~~~------__")
+    print("                    -==\\                         `//~\\   ~~~~`---.___.-~~'")
+    print("                ______-==|                         | |  \\           _-~`'")
+    print("          __--~~~  ,-/-==\\                        | |   `\        ,'")
+    print("       _-~       /'    |  \\                      / /      \      /")
+    print("     .'        /       |   \\                   /' /        \   /'")
+    print("    /  ____  /         |    \`\.__/-~~ ~ \ _ _/'  /          \/'")
+    print("   /-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~`")
+    print("                     \_|      /        _)   ;  ),   __--~~")
+    print("                       '~~--_/      _-~/-  / \   '-~ \ ")
+    print("                      {\__--_/}    / \\_>- )<__\      \ ")
+    print("                      /'   (_/  _-~  | |__>--<__|      |")
+    print("                     |0  0 _/) )-~     | |__>--<__|    |")
+    print("                     / /~ ,_/       / /__>---<__/      |")
+    print("                    o o _//        /-~_>---<__-~      /")
+    print("                    (^(~          /~_>---<__-      _-~")
+    print("                                 /__>--<__/     _-~ ")
+    print("                                |__>--<__|     /    ")
+    print("                                |__>--<__|    |     ")
 def dungeon():
     print('---------------------------------------------------------------------------------------------------')
     print('           ___  _  _ _  _ ____ ____ ____ _  _    ____ _ _  _ _  _ _    ____ ___ ____ ____')
@@ -128,6 +177,21 @@ def weaponWEC():
         attack = '5 - 10'
     elif weaponWE == 'Golden Sword':
         attack = '10 - 15'
+def inven():
+    clear()
+    Main6()
+    print('\nInventory:')
+    print('Weapons: ',weaponW)
+    print('Shield: ',shieldW)
+    print('Armour: ',armourW)
+    print('\nCurrently Equipped:')
+    print('Weapon: ',weaponWE)
+    print('Shield: ',shieldWE)
+    print('Armour: ',armourWE)
+    print('\nSpells:')
+    print('Fireball: ',fireball)
+    print('Lightning Bolt: ',lightning)
+    print('Blizzard: ',blizzard)
 def inventoryW():
     global weaponW
     global shieldW
@@ -136,23 +200,38 @@ def inventoryW():
     global lightning
     global blizzard
     while True:
-        clear()
-        Main6()
-        print('\nInventory:')
-        print('Weapons: ',weaponW)
-        print('Shield: ',shieldW)
-        print('Armour: ',armourW)
-        print('\nCurrently Equipped:')
-        print('Weapon: ',weaponWE)
-        print('Shield: ',shieldWE)
-        print('Armour: ',armourWE)
-        print('\nSpells:')
-        print('Fireball: ',fireball)
-        print('Lightning Bolt: ',lightning)
-        print('Blizzard: ',blizzard)
+        inven()
         action=input('\n[Enter/Return] to Return \n')
         if action == "":
             levelShop()
+        else:
+            continue
+def inventory2():
+    global weaponW
+    global shieldW
+    global armourW
+    global fireball
+    global lightning
+    global blizzard
+    while True:
+        inven()
+        action=input('\n[Enter/Return] to Return \n')
+        if action == "":
+            levelBoss3()
+        else:
+            continue
+def inventory3():
+    global weaponW
+    global shieldW
+    global armourW
+    global fireball
+    global lightning
+    global blizzard
+    while True:
+        inven()
+        action=input('\n[Enter/Return] to Return \n')
+        if action == "":
+            levelBoss2()
         else:
             continue
 def ShopWeapon():
@@ -297,6 +376,8 @@ def classSelect2():
     global fireball
     global lightning
     global blizzard
+    global dmg
+    global bosshp
     name = ''
     summon=''
     weaponW='Sword'
@@ -306,6 +387,8 @@ def classSelect2():
     shieldWE=''
     armourWE='Leather Armour'
     attack=''
+    bosshp=50
+    dmg=0
     fireball=0
     lightning=0
     blizzard=0
@@ -2703,9 +2786,7 @@ def levelShop():
     elif action =='I' or action == 'i':
         inventoryW()
     elif action == 'R' or action == 'r':
-        print('End of path so far...')
-        time.sleep(5)
-        classSelect2()
+        levelBoss()
     elif action == '1':
         levelShop_W()
     elif action == '2':
@@ -2745,8 +2826,7 @@ def levelShop_W():
     elif action == 'M' or action == 'm':
         classSelect2()
     elif action == 'R' or action == 'r':
-        print('End of path.')
-        time.sleep(5)
+        levelBoss()
     elif action == 'B' or action == 'b':
         levelShop()
     elif action == 'I' or action == 'i':
@@ -3218,8 +3298,7 @@ def levelShop_A():
     elif action == 'M' or action == 'm':
         classSelect2()
     elif action == 'R' or action == 'r':
-        print('End of path.')
-        time.sleep(5)
+        levelBoss()
     elif action == 'B' or action == 'b':
         levelShop()
     elif action == 'I' or action == 'i':
@@ -3537,8 +3616,7 @@ def levelShop_P():
     elif action == 'M' or action == 'm':
         classSelect2()
     elif action == 'R' or action == 'r':
-        print('End of path.')
-        time.sleep(5)
+        levelBoss()
     elif action == 'B' or action == 'b':
         levelShop()
     elif action == 'I' or action == 'i':
@@ -3724,8 +3802,7 @@ def levelShop_S():
     elif action == 'M' or action == 'm':
         classSelect2()
     elif action == 'R' or action == 'r':
-        print('End of path.')
-        time.sleep(5)
+        levelBoss()
     elif action == 'B' or action == 'b':
         levelShop()
     elif action == 'I' or action == 'i':
@@ -3885,5 +3962,193 @@ def levelShop_S():
                     continue
     else:
         levelShop_S()
-
+def levelBoss():
+    clear()
+    Main4()
+    print('Having finished your purchases at the shop, you advance through the door.')
+    dialog()
+    print('You find yourself in a hallway, at the end is a bright light.')
+    dialog()
+    print('As you emerge into the clearing you find that the ground you are standing on is floating.')
+    dialog()
+    print('Below you can see all sorts of vegetation and wildlife.')
+    dialog()
+    print('However the clearing is surrouded by a barrier of some kind.')
+    dialog()
+    print('At the other end you see a gate, one just like the one you came out of, but massive.')
+    dialog()
+    print('As the gate slowly opens from within emerges a Dragon, breathing fire onto the ground.')
+    dialog()
+    print('You draw your sword preparing for battle.')
+    while True:
+        clear()
+        Main4()
+        print('Having finished your purchases at the shop, you advance through the door.')
+        print('You find yourself in a hallway, at the end is a bright light.')
+        print('As you emerge into the clearing you find that the ground you are standing on is floating.')
+        print('Below you can see all sorts of vegetation and wildlife.')
+        print('However the clearing is surrouded by a barrier of some kind.')
+        print('At the other end you see a gate, one just like the one you came out of, but massive.')
+        print('As the gate slowly opens from within emerges a Dragon, breathing fire onto the ground.')
+        print('You draw your sword preparing for battle.')
+        action=input('[Enter/Return] to Continue\n')
+        if action == "":
+            levelBoss2()
+        elif action == 'Q' or action == 'q':
+            quit()
+        elif action == 'P' or action == 'p':
+            songP()
+            continue
+        elif action == 'S' or action == 's':
+            songS()
+            continue
+        elif action == 'M' or action == 'm':
+            classSelect2()
+        else:
+            continue
+def levelBoss2():
+    global bosshp
+    global fireball
+    global lightning
+    global blizzard
+    global weaponWE
+    global shieldWE
+    global armourWE
+    global golden
+    global sharp
+    global sword
+    global dmg
+    clear()
+    Main4()
+    dragon()
+    action=input('Selection: ')
+    if action == '1':
+        clear()
+        Main4()
+        dragon()
+        attackboss()
+        bosshp = bosshp - dmg
+        while True:
+            clear()
+            Main4()
+            dragon()
+            print('Attack: ',dmg)
+            action=input('[Enter/Return] to Continue [I] Inventory\n')
+            if action == "":
+                levelBoss3()
+            elif action == 'I' or action == 'i':
+                inventory2()
+            elif action == 'Q' or action == 'q':
+                quit()
+            elif action == 'P' or action == 'p':
+                songP()
+                continue
+            elif action == 'S' or action == 's':
+                songS()
+                continue
+            elif action == 'M' or action == 'm':
+                classSelect2()
+            else:
+                continue
+def attackboss():
+    global golden
+    global sharp
+    global sword
+    global dmg
+    golden = randint(10,15)
+    sharp = randint(5,10)
+    sword = randint(1,5)
+    clear()
+    Main4()
+    dragon()
+    if weaponWE == 'Sword':
+        for i in range(1,150):
+            print('Attack: ',randint(1,5), end='\r')
+            time.sleep(0.001)
+        for i in range(1,75):
+            print('Attack: ',randint(1,5), end='\r')
+            time.sleep(0.01)
+        for i in range(1,5):
+            print('Attack: ',randint(1,5), end='\r')
+            time.sleep(0.1)
+        for i in range(1,3):
+            print('Attack: ',sword, end='\r')
+            time.sleep(0.8)
+        dmg = sword
+    elif weaponWE == 'Sharp Sword':
+        for i in range(1,150):
+            print('Attack: ',randint(5,10), end='\r')
+            time.sleep(0.001)
+        for i in range(1,75):
+            print('Attack: ',randint(5,10), end='\r')
+            time.sleep(0.01)
+        for i in range(1,5):
+            print('Attack: ',randint(5,10), end='\r')
+            time.sleep(0.1)
+        for i in range(1,3):
+            print('Attack: ',sharp, end='\r')
+            time.sleep(0.8)
+        dmg = sharp
+    elif weaponWE == 'Golden Sword':
+        for i in range(1,150):
+            print('Attack: ',randint(10,15), end='\r')
+            time.sleep(0.001)
+        for i in range(1,75):
+            print('Attack: ',randint(10,15), end='\r')
+            time.sleep(0.01)
+        for i in range(1,5):
+            print('Attack: ',randint(10,15), end='\r')
+            time.sleep(0.1)
+        for i in range(1,3):
+            print('Attack: ',golden, end='\r')
+            time.sleep(0.8)
+        dmg = golden
+def levelBoss3():
+    global health
+    global block
+    clear()
+    Main4()
+    dragonfire()
+    dragondmg = randint(0,9)
+    for i in range(1,150):
+        print('Dragon is now attacking: ',randint(0,9), end='\r')
+        time.sleep(0.001)
+    for i in range(1,75):
+        print('Dragon is now attacking: ',randint(0,9), end='\r')
+        time.sleep(0.01)
+    for i in range(1,5):
+        print('Dragon is now attacking: ',randint(0,9), end='\r')
+        time.sleep(0.1)
+    for i in range(1,3):
+        print('Dragon is now attacking: ',dragondmg, end='\r')
+        time.sleep(0.8)
+    dragond = dragondmg
+    if block > dragond:
+        realdmg = 0
+    elif block <= dragond:
+        realdmg = dragond - block
+    health = health - realdmg
+    while True:
+        clear()
+        Main4()
+        dragonfire()
+        print('Dragon is now attacking: ',dragond)
+        print('You blocked: ',block,' damage. You recieved: ',realdmg,' damage.')
+        action=input('[Enter/Return] to Continue [I] Inventory\n')
+        if action == "":
+            levelBoss2()
+        elif action == 'I' or action == 'i':
+            inventory3()
+        elif action == 'Q' or action == 'q':
+            quit()
+        elif action == 'P' or action == 'p':
+            songP()
+            continue
+        elif action == 'S' or action == 's':
+            songS()
+            continue
+        elif action == 'M' or action == 'm':
+            classSelect2()
+        else:
+            continue
 classSelect()
