@@ -15,12 +15,14 @@
 * Dialog Speed Interchangable
 * Text-Based
 * Choose your own adventure style
+* Spells
 * Story Rich (Some english grammatical and spelling errors)
 
 # Work In Progress
-* Boss Fight (47% Completed) 
+* Boss Fight (47% Completed) ~
 * Colors?
 * How to Play?
+* Difficulty
 * Combat System (14% Completed) ~
 * Warrior Arc (96% Completed)
 * Archer Arc (37% Completed) ~
