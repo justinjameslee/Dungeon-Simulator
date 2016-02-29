@@ -78,25 +78,12 @@ def Main3():
     line()
 def Main4():
     global mode
-    if weaponWE == 'Sword':
-        attack = '1 - 5'
-    elif weaponWE == 'Sharp Sword':
-        attack = '5 - 10'
-    elif weaponWE == 'Golden Sword':
-        attack = '10 - 15'
     global attack
-    if shieldWE == 'Wooden Shield':
-        block = block + 2
-    elif shieldWE == 'Iron Shield':
-        block = block + 5
     global health
-    if armourWE == 'Leather Armour':
-        block = block + 2
-    elif armourWE == 'Chainmail Armour':
     global gold
     global name
     global block
-    global weaponWE
+    weaponWEC()
     dungeon()
     print("           Playthrough Mode:", mode, '\n')
     print("           Options: [Q] Quit [P] Play Music [S] Stop Music [M] Main Menu [I] Inventory \n")
@@ -118,12 +105,24 @@ def Main6():
     global health
     global gold
     global name
+    global attack
+    global block
+    weaponWEC()
     dungeon()
     print("           Playthrough Mode:", mode, '\n')
     print('           Options: Currently Disabled until next Choice.\n')
     print('           Stats:  Health: ',health,' Gold: ',gold,' Class: ',name,'\n')
     print('           Combat Stats: Attack: ',attack,' Block: ',block,'\n')
     line()
+def weaponWEC():
+    global attack
+    global weaponWE
+    if weaponWE == 'Sword':
+        attack = '1 - 5'
+    elif weaponWE == 'Sharp Sword':
+        attack = '5 - 10'
+    elif weaponWE == 'Golden Sword':
+        attack = '10 - 15'
 def inventoryW():
     global weaponW
     global shieldW
@@ -285,7 +284,7 @@ def classSelect2():
     shieldWE=''
     armourWE='Leather Armour'
     attack=''
-    block-0
+    block=0
     gold=0
     health=10
     warriorL=False
@@ -310,6 +309,7 @@ def classSelect2():
         if role == '1':
             print('You have selected Warrior',end='\r')
             name='Warrior'
+            block=2
             level1_W()
         elif role == '2':
             print('You have selected Archer', end='\r')
@@ -347,6 +347,7 @@ def level1_W():
     global health
     global warriorL
     global warriorR
+    global block
     clear()
     Main5()
     print('There are two tunnels.')
@@ -557,11 +558,14 @@ def level2_W():
     global gold
     global warriorRL
     global warriorRR
+    global weaponWE
+    global weaponW
     clear()
     Main()
-
     if warriorL == True:
-        print('You have found a sharp sword, this is better than your current one.')
+        print('You have found a Sharp Sword, this is better than your current one.')
+        weaponW = weaponW + ', Sharp Sword'
+        weaponWE = 'Sharp Sword'
         dialog()
         print('You take 1 damage from picking up the sword.')
         health = health - 1
@@ -581,7 +585,6 @@ def level2_W():
     elif warriorR == True:
         clear()
         Main5()
-
         print('You have found a rusty sword, this is worse than your current one.')
         print('You pass it without picking it up.')
         print('You see 10 wild boars roaming the area')
@@ -2429,7 +2432,7 @@ def level4_WRRR():
                     print('However in the process you take 10 damage as compensation.')
                     health = health - 10
                     weaponWE = 'Golden Sword'
-                    weaponW += ' Golden Sword'
+                    weaponW += ', Golden Sword'
                     dialog()
                     clear()
                     Main()
@@ -2739,9 +2742,9 @@ def levelShop_W():
     global weaponW
     global shieldW
     global gold
+    global block
     clear()
     Main4()
-
     print("'The Burning Fire' Shop ")
     print('[R] Ready to Continue [B] Back to Shop')
     print('Weapons: ')
@@ -2773,7 +2776,6 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -2798,7 +2800,6 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You already own this.')
@@ -2822,11 +2823,11 @@ def levelShop_W():
         elif gold == 5 or gold > 5:
             gold = gold - 5
             weaponWE = 'Sword'
-            weaponW += ' Sword'
+            weaponW += ', Sword'
+            weaponWEC()
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Sword.')
@@ -2852,7 +2853,6 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -2873,15 +2873,14 @@ def levelShop_W():
                     classSelect2()
                 else:
                     continue
-        elif weaponWE == 'Sharp Sword' or 'Sharp Sword' in weaponW:
-            if weaponWE == 'Golden Sword' or weaponWE == 'Dual Swords':
+        elif weaponWE == 'Golden Sword':
+            if weaponWE == 'Sharp Sword' or 'Sharp Sword' in weaponW:
                 while True:
                     clear()
                     Main4()
-
                     ShopWeapon()
                     print('Selection: ',action)
-                    print('Your weapon is far greater than this.')
+                    print('You already own this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
                         levelShop_W()
@@ -2903,10 +2902,9 @@ def levelShop_W():
                 while True:
                     clear()
                     Main4()
-
                     ShopWeapon()
                     print('Selection: ',action)
-                    print('You already own this.')
+                    print('Your weapon is far greater than this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
                         levelShop_W()
@@ -2927,11 +2925,11 @@ def levelShop_W():
         elif gold == 8 or gold > 8:
             gold = gold - 8
             weaponWE = 'Sharp Sword'
-            weaponW += ' Sharp Sword'
+            weaponW += ', Sharp Sword'
+            weaponWEC()
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Sharp Sword.')
@@ -2957,7 +2955,6 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -2982,7 +2979,6 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You already own this.')
@@ -3006,11 +3002,11 @@ def levelShop_W():
         elif gold == 15 or gold > 15:
             gold = gold - 15
             weaponWE = 'Golden Sword'
-            weaponW += ' Golden Sword'
+            weaponW += ', Golden Sword'
+            weaopnWEC()
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Golden Sword.')
@@ -3036,7 +3032,6 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -3057,15 +3052,14 @@ def levelShop_W():
                     classSelect2()
                 else:
                     continue
-        elif shieldWE == 'Wooden Shield' or 'Wooden Shield' in shieldW:
-            if shieldWE == 'Iron Shield':
+        elif shieldWE == 'Iron Shield' or 'Iron Shield' in shieldW:
+            if shieldWE == 'Wooden Shield' or 'Wooden Shield' in shieldW:
                 while True:
                     clear()
                     Main4()
-
                     ShopWeapon()
                     print('Selection: ',action)
-                    print('Your shield is far greater than this.')
+                    print('You already own this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
                         levelShop_W()
@@ -3087,10 +3081,9 @@ def levelShop_W():
                 while True:
                     clear()
                     Main4()
-
                     ShopWeapon()
                     print('Selection: ',action)
-                    print('You already own this.')
+                    print('Your shield is far greater than this.')
                     action=input('[Enter/Return] to Continue [I] Inventory\n')
                     if action == "":
                         levelShop_W()
@@ -3112,10 +3105,10 @@ def levelShop_W():
             gold = gold - 2
             shieldWE = 'Wooden Shield'
             shieldW += ' Wooden Shield'
+            block = block + 2
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Wooden Shield.')
@@ -3141,8 +3134,7 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
-                ShopWeapn()
+                ShopWeapon()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
                 action=input('[Enter/Return] to Continue [I] Inventory\n')
@@ -3166,7 +3158,6 @@ def levelShop_W():
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You already own this.')
@@ -3188,13 +3179,17 @@ def levelShop_W():
                 else:
                     continue
         elif gold == 5 or gold > 5:
+            if shieldWE == 'Wooden Shield':
+                block = block - 2
+                shieldW += ', Iron Shield'
+            elif shieldW == '':
+                shieldW += ' Iron Shield'
             gold = gold - 5
             shieldWE = 'Iron Shield'
-            shieldW += ' Iron Shield'
+            block = block + 5
             while True:
                 clear()
                 Main4()
-
                 ShopWeapon()
                 print('Selection: ',action)
                 print('You have acquired a Iron Shield.')
@@ -3225,7 +3220,6 @@ def levelShop_A():
     global block
     clear()
     Main4()
-
     print("'The Burning Fire' Shop ")
     print('[R] Ready to Continue [B] Back to Shop')
     print('Armour: ')
@@ -3255,7 +3249,6 @@ def levelShop_A():
             while True:
                 clear()
                 Main4()
-
                 ShopArmour()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -3281,7 +3274,6 @@ def levelShop_A():
                 while True:
                     clear()
                     Main4()
-
                     ShopArmour()
                     print('Selection: ',action)
                     print('Your armour is far greater than this.')
@@ -3306,7 +3298,6 @@ def levelShop_A():
                 while True:
                     clear()
                     Main4()
-
                     ShopArmour()
                     print('Selection: ',action)
                     print('You already own this.')
@@ -3329,13 +3320,12 @@ def levelShop_A():
                         continue
         elif gold == 2 or gold > 2:
             gold = gold - 2
-            block=2
             armourWE = 'Leather Armour'
             armourW += ' Leather Armour'
+            block = block + 2
             while True:
                 clear()
                 Main4()
-
                 ShopArmour()
                 print('Selection: ',action)
                 print('You have acquired Leather Armour.')
@@ -3361,7 +3351,6 @@ def levelShop_A():
             while True:
                 clear()
                 Main4()
-
                 ShopArmour()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -3387,7 +3376,6 @@ def levelShop_A():
                 while True:
                     clear()
                     Main4()
-
                     ShopArmour()
                     print('Selection: ',action)
                     print('Your armour is far greater than this.')
@@ -3412,7 +3400,6 @@ def levelShop_A():
                 while True:
                     clear()
                     Main4()
-
                     ShopArmour()
                     print('Selection: ',action)
                     print('You already own this.')
@@ -3434,14 +3421,15 @@ def levelShop_A():
                     else:
                         continue
         elif gold == 5 or gold > 5:
+            if armourWE == 'Leather Armour':
+                block = block - 2
             gold = gold - 5
             armourWE = 'Chainmail Armour'
             armourW += ' Chainmail Armour'
-            block=5
+            block = block + 5
             while True:
                 clear()
                 Main4()
-
                 ShopArmour()
                 print('Selection: ',action)
                 print('You have acquired Chainmail Armour.')
@@ -3467,7 +3455,6 @@ def levelShop_A():
             while True:
                 clear()
                 Main4()
-
                 ShopArmour()
                 print('Selection: ',action)
                 print('Insufficient Gold.')
@@ -3492,7 +3479,6 @@ def levelShop_A():
             while True:
                 clear()
                 Main4()
-
                 ShopArmour()
                 print('Selection: ',action)
                 print('You already own this.')
@@ -3514,14 +3500,17 @@ def levelShop_A():
                 else:
                     continue
         elif gold == 10 or gold > 10:
+            if armourWE == 'Chainmail Armour':
+                block = block - 5
+            elif armourWE == 'Leather Armour':
+                block = block - 2
             gold = gold - 10
             armourWE = 'Iron Armour'
             armourW += ' Iron Armour'
-            block=10
+            block = block + 10
             while True:
                 clear()
                 Main4()
-
                 ShopArmour()
                 print('Selection: ',action)
                 print('You have acquired Iron Armour.')
