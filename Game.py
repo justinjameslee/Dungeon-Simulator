@@ -422,6 +422,7 @@ def classSelect2():
             print('You have selected Warrior',end='\r')
             name='Warrior'
             block=2
+            level1_W()
         elif role == '2':
             print('You have selected Archer', end='\r')
             name='Archer'
