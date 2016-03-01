@@ -4449,4 +4449,5 @@ def realcredits():
             quit()
         else:
             continue
+loading()
 classSelect()
