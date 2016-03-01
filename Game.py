@@ -22,10 +22,11 @@ attack=''
 golden = randint(10,15)
 sharp = randint(5,10)
 sword = randint(1,5)
+blocked = randint(0,9)
 dmg=0
 block=0
 gold=0
-bosshp=50
+bosshp=75
 fireball=0
 lightning=0
 blizzard=0
@@ -48,6 +49,7 @@ archerL=False
 archerR=False
 earth=False
 fire=False
+blockedy=0
 player = pyglet.media.Player()
 music = pyglet.media.load('Epic.mp3')
 os.system("title "+Title)
@@ -128,7 +130,7 @@ def Main3():
     global mode
     dungeon()
     print("           Playthrough Mode:", mode, '\n')
-    print('           Options: [Q] Quit [P] Play Music [S] Stop Music [B] Back to Dialog Speed \n')
+    print('           Options: [Q] Quit [P] Play Music [S] Stop Music [B] Back to Dialog Speed [C] Credits\n')
     line()
 def Main4():
     global mode
@@ -165,7 +167,7 @@ def Main6():
     dungeon()
     print("           Playthrough Mode:", mode, '\n')
     print('           Options: Currently Disabled until next Choice.\n')
-    print('           Stats:  Health: ',health,' Gold: ',gold,' Class: ',name,'\n')
+    print('           Stats:  Health: ',health,' Gold: ',gold,' Class: ',name)
     print('           Combat Stats: Attack: ',attack,' Block: ',block,'\n')
     line()
 def weaponWEC():
@@ -249,7 +251,7 @@ def ShopArmour():
     print('Armour: ')
     print('[1] Leather Armour    | Block: 2    (2 Gold)')
     print('[2] Chainmail Armour  | Block: 5    (5 Gold)')
-    print('[3] Iron Armour       | Block: 10   (5 Gold)')
+    print('[3] Iron Armour       | Block: 10   (10 Gold)')
 def ShopPotion():
     print("'The Burning Fire' Shop ")
     print('[R] Ready to Continue [B] Back to Shop')
@@ -261,9 +263,9 @@ def ShopSpell():
     print("'The Burning Fire' Shop ")
     print('[R] Ready to Continue [B] Back to Shop')
     print('Spell Books: ')
-    print('[1] Fireball        | Attack: 5    (5 Gold)')
-    print('[2] Lightning Bolt  | Attack: 10   (10 Gold)')
-    print('[3] Blizzard        | Attack: 15   (15 Gold)')
+    print('[1] Fireball        | Attack: 10    (5 Gold)')
+    print('[2] Lightning Bolt  | Attack: 15   (10 Gold)')
+    print('[3] Blizzard        | Attack: 20   (15 Gold)')
 def hp2():
     global health
     global name
@@ -378,6 +380,7 @@ def classSelect2():
     global blizzard
     global dmg
     global bosshp
+    global blockedy
     name = ''
     summon=''
     weaponW='Sword'
@@ -387,7 +390,7 @@ def classSelect2():
     shieldWE=''
     armourWE='Leather Armour'
     attack=''
-    bosshp=50
+    bosshp=75
     dmg=0
     fireball=0
     lightning=0
@@ -410,6 +413,7 @@ def classSelect2():
     archerR=False
     earth=False
     fire=False
+    blockedy=0
     while True:
         clear()
         Main3()
@@ -418,7 +422,6 @@ def classSelect2():
             print('You have selected Warrior',end='\r')
             name='Warrior'
             block=2
-            level1_W()
         elif role == '2':
             print('You have selected Archer', end='\r')
             name='Archer'
@@ -435,6 +438,8 @@ def classSelect2():
             songP()
         elif role == 'S' or role == 's':
             songS()
+        elif role =='C' or role =='c':
+            realcredits()
         else:
             continue
 def songP():
@@ -2725,7 +2730,6 @@ def level5_W2():
             elif path_c == 2:
                 clear()
                 Main()
-
                 print('You draw your Golden Sword perparing to charge the new enemies.')
                 dialog()
                 print('As you down one the rest stop chanting, the magic circle disappears.')
@@ -3285,7 +3289,7 @@ def levelShop_A():
     print('Armour: ')
     print('[1] Leather Armour    | Block: 2    (2 Gold)')
     print('[2] Chainmail Armour  | Block: 5    (5 Gold)')
-    print('[3] Iron Armour       | Block: 10   (5 Gold)')
+    print('[3] Iron Armour       | Block: 10   (10 Gold)')
     action=input('Selection: ')
     if action == 'Q' or action == 'q':
         quit()
@@ -3603,7 +3607,7 @@ def levelShop_P():
     print('Potions: ')
     print('[1] Small Health Potion   | Health + 1   (1 Gold)')
     print('[2] Health Potion         | Health + 5   (5 Gold)')
-    print('[2] Large Health Potion   | Health + 10  (10 Gold)')
+    print('[3] Large Health Potion   | Health + 10  (10 Gold)')
     action=input('Selection: ')
     if action == 'Q' or action == 'q':
         quit()
@@ -3787,9 +3791,9 @@ def levelShop_S():
     print("'The Burning Fire' Shop ")
     print('[R] Ready to Continue [B] Back to Shop')
     print('Spell Books: ')
-    print('[1] Fireball        | Attack: 5    (5 Gold)')
-    print('[2] Lightning Bolt  | Attack: 10   (10 Gold)')
-    print('[3] Blizzard        | Attack: 15   (15 Gold)')
+    print('[1] Fireball        | Attack: 10    (5 Gold)')
+    print('[2] Lightning Bolt  | Attack: 15   (10 Gold)')
+    print('[3] Blizzard        | Attack: 20   (15 Gold)')
     action=input('Selection: ')
     if action == 'Q' or action == 'q':
         quit()
@@ -4006,6 +4010,15 @@ def levelBoss():
             classSelect2()
         else:
             continue
+def healthcheck():
+    global health
+    if health <= 0:
+        health = 0
+def bosscheck():
+    global bosshp
+    if bosshp <= 0:
+        bosshp = 0
+        victory()
 def levelBoss2():
     global bosshp
     global fireball
@@ -4018,6 +4031,14 @@ def levelBoss2():
     global sharp
     global sword
     global dmg
+    global block
+    global blockedy
+    global blocked
+    if blockedy == 2:
+        blockedy = 0
+        block = block - blocked
+    bosscheck()
+    healthcheck()
     clear()
     Main4()
     dragon()
@@ -4028,11 +4049,13 @@ def levelBoss2():
         dragon()
         attackboss()
         bosshp = bosshp - dmg
+        bosscheck()
         while True:
             clear()
             Main4()
             dragon()
             print('Attack: ',dmg)
+            print('You dealt: ',dmg,' damage to the Dragon.')
             action=input('[Enter/Return] to Continue [I] Inventory\n')
             if action == "":
                 levelBoss3()
@@ -4050,6 +4073,210 @@ def levelBoss2():
                 classSelect2()
             else:
                 continue
+    elif action == '2':
+        clear()
+        Main4()
+        dragon()
+        blockboss()
+    elif action == '3':
+        clear()
+        Main4()
+        dragon()
+        fireballattack()
+    elif action == '4':
+        clear()
+        Main4()
+        dragon()
+        lightningattack()
+    elif action == '5':
+        clear()
+        Main4()
+        dragon()
+        blizzardattack()
+def fireballattack():
+    global fireball
+    global bosshp
+    if fireball == 0:
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print("You don't have any Fireball spells.")
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                levelBoss2()
+            else:
+                continue
+    else:
+        bosshp = bosshp - 10
+        fireball = fireball - 1
+        bosscheck()
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print("You cast your Fireball spell dealing 10 damage.")
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                levelBoss2()
+            else:
+                continue
+def lightningattack():
+    global lightning
+    global bosshp
+    if lightning == 0:
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print("You don't have any Lightning Bolt spells.")
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                levelBoss2()
+            else:
+                continue
+    else:
+        bosshp = bosshp - 15
+        lightning = lightning - 1
+        bosscheck()
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print("You cast your Lightning Bolt spell dealing 15 damage.")
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                levelBoss2()
+            else:
+                continue
+def blizzardattack():
+    global bosshp
+    global blizzard
+    if blizzard == 0:
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print("You don't have any Blizzard spells.")
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                levelBoss2()
+            else:
+                continue
+    else:
+        bosshp = bosshp - 20
+        blizzard = blizzard - 1
+        bosscheck()
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print("You cast your Blizzard spell dealing 20 damage.")
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                levelBoss2()
+            else:
+                continue
+def blockboss():
+    global health
+    global block
+    global blockedy
+    global blocked
+    if blockedy == 1:
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print('Your block is still active.')
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                levelBoss2()
+            else:
+                continue
+    elif blockedy == 0:
+        clear()
+        Main4()
+        dragon()
+        blocked = randint(0,9)
+        dragondmg = randint(5,25)
+        for i in range(1,150):
+            print('Increased block by ',randint(0,9),' for 2 turns.', end='\r')
+            time.sleep(0.001)
+        for i in range(1,75):
+            print('Increased block by ',randint(0,9),' for 2 turns.', end='\r')
+            time.sleep(0.01)
+        for i in range(1,5):
+            print('Increased block by ',randint(0,9),' for 2 turns.', end='\r')
+            time.sleep(0.1)
+        for i in range(1,3):
+            print('Increased block by ',blocked,' for 2 turns.', end='\r')
+            time.sleep(0.8)
+        blockedy = blockedy + 1
+        block = block + blocked
+        while True:
+            clear()
+            Main6()
+            dragon()
+            print('Increased block by ',blocked,' for 2 turns.')
+            print('You total block is now: ',block)
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                break
+            else:
+                continue
+        clear()
+        Main4()
+        dragonfire()
+        for i in range(1,150):
+            print('Dragon is now attacking: ',randint(5,25),' ', end='\r')
+            time.sleep(0.001)
+        for i in range(1,75):
+            print('Dragon is now attacking: ',randint(5,25),' ', end='\r')
+            time.sleep(0.01)
+        for i in range(1,5):
+            print('Dragon is now attacking: ',randint(5,25),' ', end='\r')
+            time.sleep(0.1)
+        for i in range(1,3):
+            print('Dragon is now attacking: ',dragondmg,' ', end='\r')
+            time.sleep(0.8)
+        dragond = dragondmg
+        if block > dragond:
+            realdmg = 0
+        elif block <= dragond:
+            realdmg = dragond - block
+        if realdmg == health or realdmg > health:
+            health = 0
+            while True:
+                clear()
+                Main6()
+                dragonfire()
+                print('Dragon is now attacking: ',dragond)
+                print('You blocked: ',block,' damage, however you are unable to block enough and you die.')
+                action=input('[Enter/Return] to Continue\n')
+                if action == "":
+                    if health == 0:
+                        gameover()
+                    else:
+                        levelBoss2()
+                else:
+                    continue
+        elif health > realdmg:
+            health = health - realdmg
+            healthcheck()
+            while True:
+                clear()
+                Main6()
+                dragonfire()
+                print('Dragon is now attacking: ',dragond)
+                print('You blocked: ',block,' damage. You recieved: ',realdmg,' damage.')
+                action=input('[Enter/Return] to Continue\n')
+                if action == "":
+                    if health == 0:
+                        gameover()
+                    else:
+                        levelBoss2()
+                else:
+                    continue
 def attackboss():
     global golden
     global sharp
@@ -4106,49 +4333,121 @@ def attackboss():
 def levelBoss3():
     global health
     global block
+    global blockedy
+    if blockedy == 1:
+        blockedy = blockedy + 1
     clear()
     Main4()
     dragonfire()
-    dragondmg = randint(0,9)
+    dragondmg = randint(5,25)
     for i in range(1,150):
-        print('Dragon is now attacking: ',randint(0,9), end='\r')
+        print('Dragon is now attacking: ',randint(5,25),' ', end='\r')
         time.sleep(0.001)
     for i in range(1,75):
-        print('Dragon is now attacking: ',randint(0,9), end='\r')
+        print('Dragon is now attacking: ',randint(5,25),' ', end='\r')
         time.sleep(0.01)
     for i in range(1,5):
-        print('Dragon is now attacking: ',randint(0,9), end='\r')
+        print('Dragon is now attacking: ',randint(5,25),' ', end='\r')
         time.sleep(0.1)
     for i in range(1,3):
-        print('Dragon is now attacking: ',dragondmg, end='\r')
+        print('Dragon is now attacking: ',dragondmg,' ', end='\r')
         time.sleep(0.8)
     dragond = dragondmg
     if block > dragond:
         realdmg = 0
     elif block <= dragond:
         realdmg = dragond - block
-    health = health - realdmg
+    if realdmg == health or realdmg > health:
+        health = 0
+        while True:
+            clear()
+            Main6()
+            dragonfire()
+            print('Dragon is now attacking: ',dragond)
+            print('You blocked: ',block,' damage, however you are unable to block enough and you die.')
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                if health == 0:
+                    gameover()
+                else:
+                    levelBoss2()
+            else:
+                continue
+    elif health > realdmg:
+        health = health - realdmg
+        healthcheck()
+        while True:
+            clear()
+            Main6()
+            dragonfire()
+            print('Dragon is now attacking: ',dragond)
+            print('You blocked: ',block,' damage. You recieved: ',realdmg,' damage.')
+            action=input('[Enter/Return] to Continue\n')
+            if action == "":
+                if health == 0:
+                    gameover()
+                else:
+                    levelBoss2()
+            else:
+                continue
+def gameover():
     while True:
         clear()
         Main4()
         dragonfire()
-        print('Dragon is now attacking: ',dragond)
-        print('You blocked: ',block,' damage. You recieved: ',realdmg,' damage.')
-        action=input('[Enter/Return] to Continue [I] Inventory\n')
-        if action == "":
-            levelBoss2()
-        elif action == 'I' or action == 'i':
-            inventory3()
-        elif action == 'Q' or action == 'q':
-            quit()
-        elif action == 'P' or action == 'p':
-            songP()
-            continue
-        elif action == 'S' or action == 's':
-            songS()
-            continue
-        elif action == 'M' or action == 'm':
+        print('You have been killed!',end='\r')
+        print('\nGAME OVER!')
+        action=input('Try Again? [Y/N]\n')
+        if action == 'Y' or action =='y':
             classSelect2()
+        elif action =='N' or action =='n':
+            quit()
+        else:
+            continue
+def victory():
+    global block
+    global blocked
+    while True:
+        clear()
+        line()
+        print('                                   _  _ _ ____ ___ ____ ____ _   _  ')
+        print('                                   |  | | |     |  |  | |__/  \_/   ')
+        print('                                    \/  | |___  |  |__| |  \   |    \n')
+        line()
+        print('\n')
+        print('                                         Congratulations!')
+        print('                                     You have Beaten The Game!')
+        print('                       You defeated the dragon and safely returned back home.\n')
+        credits()
+        print('                                        THANKS FOR PLAYING!')
+        print('                                      [1] Main Menu [2] Quit\n')
+        action=input('                                      Selection: ')
+        if action == '1':
+            classSelect2()
+        elif action == '2':
+            quit()
+        else:
+            continue
+def credits():
+    print('\n')
+    print('                                             CREDITS')
+    print('                                       Creator: Justin Lee\n')
+    print('                                         Special Mentions')
+    print('                                          -Alister Wong')
+    print('                                          -David Huang')
+    print('                                          -Aiden Mellor\n\n')
+def realcredits():
+    while True:
+        clear()
+        dungeon()
+        line()
+        credits()
+        print('                                      [1] Main Menu [2] Quit\n')
+        action=input('                                      Selection: ')
+        if action == '1':
+            classSelect2()
+        elif action == '2':
+            quit()
         else:
             continue
 classSelect()
