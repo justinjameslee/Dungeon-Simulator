@@ -2544,7 +2544,6 @@ def level4_WRRR():
 def level4_WRRR2():
     clear()
     Main()
-
     print('You slowly approach the sword, putting one foot in front of the other.')
     print('You put both hands on the handle of the sword and proceed to pull.')
     print("It doesn't budge, suddenly a flash of lightning strikes down.")
@@ -2562,7 +2561,6 @@ def level5_W():
     global gold
     clear()
     Main5()
-
     print('The Left Hallway has many torches and seems to lead to some sort of Opening?')
     print('Yes a Dungeon Opening, from here I can faintly hear the sound of the wind.')
     print('However the Right Hallway is giving the opposite effect.')
