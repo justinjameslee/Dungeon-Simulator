@@ -4303,16 +4303,16 @@ def attackboss():
         dmg = sword
     elif weaponWE == 'Sharp Sword':
         for i in range(1,150):
-            print('Attack: ',randint(5,10), end='\r')
+            print('Attack: ',randint(5,10),' ', end='\r')
             time.sleep(0.001)
         for i in range(1,75):
-            print('Attack: ',randint(5,10), end='\r')
+            print('Attack: ',randint(5,10),' ', end='\r')
             time.sleep(0.01)
         for i in range(1,5):
-            print('Attack: ',randint(5,10), end='\r')
+            print('Attack: ',randint(5,10),' ', end='\r')
             time.sleep(0.1)
         for i in range(1,3):
-            print('Attack: ',sharp, end='\r')
+            print('Attack: ',sharp,' ', end='\r')
             time.sleep(0.8)
         dmg = sharp
     elif weaponWE == 'Golden Sword':
